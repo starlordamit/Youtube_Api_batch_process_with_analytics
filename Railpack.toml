@@ -1,0 +1,54 @@
+# Railpack.toml
+
+[build]
+builder = "NIXPACKS"
+nixPkgs = ["python311", "python311Packages.pip", "python311Packages.setuptools"]
+
+[variables]
+PYTHONUNBUFFERED = "1"
+PYTHONDONTWRITEBYTECODE = "1"
+FLASK_APP = "api_server.py"
+FLASK_ENV = "production"
+PORT = "8000"
+HOST = "0.0.0.0"
+WORKERS = "4"
+TIMEOUT = "120"
+KEEPALIVE = "2"
+MAX_REQUESTS_PER_MINUTE = "60"
+ENABLE_METRICS = "true"
+ENABLE_CACHING = "true"
+CACHE_DURATION = "1800"
+
+[start]
+cmd = "gunicorn --bind $HOST:$PORT --workers $WORKERS --timeout $TIMEOUT --keepalive $KEEPALIVE --access-logfile logs/access.log --error-logfile logs/error.log api_server:app"
+
+[setup]
+cmds = [
+  "mkdir -p logs cache",
+  "touch logs/.gitkeep"
+]
+
+[build.env]
+LC_ALL = "C.UTF-8"
+LANG = "C.UTF-8"
+
+[deploy]
+healthcheckPath = "/health"
+
+[resources]
+memory = "512Mi"
+cpu = "500m"
+
+[volumes]
+"/app/logs" = "logs"
+"/app/cache" = "cache"
+
+[environments.production]
+FLASK_ENV = "production"
+FLASK_DEBUG = "false"
+WORKERS = "4"
+
+[environments.development]
+FLASK_ENV = "development"
+FLASK_DEBUG = "true"
+WORKERS = "1"

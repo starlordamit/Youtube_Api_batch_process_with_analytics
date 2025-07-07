@@ -1,0 +1,20 @@
+2025-07-07 14:04:50,923 - youtube_api_handler - INFO - Loaded 83 language mappings
+2025-07-07 14:04:50,923 - youtube_api_handler - INFO - YouTube API Handler initialized with 2 API key(s)
+2025-07-07 14:04:50,923 - youtube_api_handler - INFO - Key rotation strategy: round_robin
+2025-07-07 14:04:50,923 - youtube_api_handler - INFO - Base URL: https://www.googleapis.com/youtube/v3
+2025-07-07 14:04:50,923 - youtube_api_handler - INFO - Cache TTL: 3600s, Rate limit: 0.05s
+2025-07-07 14:04:50,923 - __main__ - INFO - YouTube API Handler initialized successfully
+2025-07-07 14:04:50,925 - __main__ - INFO - Starting Flask API server on 0.0.0.0:8000
+2025-07-07 14:04:50,925 - __main__ - INFO - Environment: production
+2025-07-07 14:04:50,925 - __main__ - INFO - Debug mode: False
+2025-07-07 14:04:50,925 - __main__ - INFO - Workers: 4
+2025-07-07 14:04:50,925 - __main__ - INFO - Authentication enabled: True
+2025-07-07 14:04:50,925 - __main__ - INFO - Metrics enabled: True
+2025-07-07 14:04:50,925 - __main__ - INFO - Configuration loaded from .env file
+2025-07-07 14:04:50,925 - __main__ - WARNING - Running in production mode with Flask dev server!
+2025-07-07 14:04:50,925 - __main__ - WARNING - Use Gunicorn or another WSGI server for production deployment
+2025-07-07 14:04:50,931 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.0.243:8000
+2025-07-07 14:04:50,932 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

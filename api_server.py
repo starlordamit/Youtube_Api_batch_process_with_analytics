@@ -619,6 +619,19 @@ def clear_cache():
         cache_status='cleared'
     ))
 
+@app.route('/api/keys/stats', methods=['GET'])
+@require_api_key
+@handle_errors
+def get_api_key_stats():
+    """Get API key usage statistics and rotation status"""
+    stats = yt_handler.get_key_usage_stats()
+    
+    return jsonify(standardize_response(
+        data=stats,
+        from_cache=False,
+        cache_status='live'
+    ))
+
 # Swagger UI Configuration
 SWAGGER_URL = '/api/docs'
 API_URL = '/api/swagger.json'
@@ -1087,6 +1100,60 @@ swagger_spec = {
                     "401": {"$ref": "#/components/responses/Unauthorized"}
                 }
             }
+        },
+        "/api/keys/stats": {
+            "get": {
+                "summary": "Get API Key Usage Statistics",
+                "description": "Retrieve detailed API key usage statistics, rotation status, and quota information",
+                "tags": ["API Keys"],
+                "security": [{"ApiKeyAuth": []}, {"ApiKeyHeader": []}],
+                "responses": {
+                    "200": {
+                        "description": "API key statistics retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {"$ref": "#/components/schemas/StandardResponse"},
+                                        {
+                                            "properties": {
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "rotation_strategy": {"type": "string", "enum": ["round_robin", "least_used", "random"]},
+                                                        "total_keys": {"type": "integer"},
+                                                        "daily_quota_per_key": {"type": "integer"},
+                                                        "hourly_quota_per_key": {"type": "integer"},
+                                                        "key_stats": {
+                                                            "type": "object",
+                                                            "additionalProperties": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "total_requests": {"type": "integer"},
+                                                                    "successful_requests": {"type": "integer"},
+                                                                    "failed_requests": {"type": "integer"},
+                                                                    "daily_requests": {"type": "integer"},
+                                                                    "hourly_requests": {"type": "integer"},
+                                                                    "daily_quota_used_pct": {"type": "number"},
+                                                                    "hourly_quota_used_pct": {"type": "number"},
+                                                                    "last_used": {"type": "string", "format": "date-time"},
+                                                                    "is_exhausted": {"type": "boolean"},
+                                                                    "can_make_request": {"type": "boolean"}
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {"$ref": "#/components/responses/Unauthorized"}
+                }
+            }
         }
     },
     "components": {
@@ -1131,7 +1198,8 @@ swagger_spec = {
         {"name": "Videos", "description": "Video data retrieval"},
         {"name": "RSS", "description": "RSS feed processing"},
         {"name": "Batch", "description": "Batch operations"},
-        {"name": "Cache", "description": "Cache management"}
+        {"name": "Cache", "description": "Cache management"},
+        {"name": "API Keys", "description": "API key usage and rotation management"}
     ]
 }
 

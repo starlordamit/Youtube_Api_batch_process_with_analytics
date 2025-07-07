@@ -149,6 +149,32 @@ python3 -c "import secrets; print('API_AUTH_KEY=' + secrets.token_urlsafe(32))"
 python3 -c "import secrets; print('SECRET_KEY=' + secrets.token_hex(32))"
 ```
 
+### YouTube API Key Rotation (New Feature)
+
+Configure multiple YouTube API keys to maximize rate limits:
+
+```bash
+# Method 1: Numbered keys (recommended)
+YOUTUBE_API_KEY_1=your_youtube_api_key_1_here
+YOUTUBE_API_KEY_2=your_youtube_api_key_2_here
+YOUTUBE_API_KEY_3=your_youtube_api_key_3_here
+
+# Method 2: Comma-separated list
+YOUTUBE_API_KEYS=key1,key2,key3,key4,key5
+
+# Rotation configuration
+YOUTUBE_API_KEY_ROTATION_STRATEGY=round_robin  # round_robin, least_used, random
+YOUTUBE_API_KEY_DAILY_QUOTA=10000
+YOUTUBE_API_KEY_HOURLY_QUOTA=1000
+```
+
+**Benefits:**
+- **5x Rate Limits**: 5 keys = 50,000 requests/day instead of 10,000
+- **Automatic Failover**: System switches to available keys when others hit limits
+- **Usage Monitoring**: Track quota usage per key via `/api/keys/stats`
+
+See `API_KEY_ROTATION.md` for detailed configuration guide.
+
 ### Performance Tuning
 
 #### For 2GB RAM Server:

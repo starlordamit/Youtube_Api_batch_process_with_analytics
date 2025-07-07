@@ -1,6 +1,7 @@
 import os
 import secrets
 from dotenv import load_dotenv
+from typing import List
 
 # Load environment variables from .env file
 load_dotenv()
@@ -8,8 +9,14 @@ load_dotenv()
 class Config:
     """Configuration class for YouTube API Handler"""
     
-    # YouTube API Configuration
-    YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
+    # YouTube API Configuration - Multiple Keys Support
+    YOUTUBE_API_KEYS: List[str] = []
+    YOUTUBE_API_KEY_ROTATION_STRATEGY = os.getenv('YOUTUBE_API_KEY_ROTATION_STRATEGY', 'round_robin')  # round_robin, least_used, random
+    YOUTUBE_API_KEY_DAILY_QUOTA = int(os.getenv('YOUTUBE_API_KEY_DAILY_QUOTA', '10000'))  # Default quota per key per day
+    YOUTUBE_API_KEY_HOURLY_QUOTA = int(os.getenv('YOUTUBE_API_KEY_HOURLY_QUOTA', '1000'))  # Default quota per key per hour
+    
+    # Legacy single key support (for backward compatibility)
+    YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY', '')
     YOUTUBE_API_BASE_URL = os.getenv('YOUTUBE_API_BASE_URL', 'https://www.googleapis.com/youtube/v3')
     
     # API Authentication Configuration
@@ -75,13 +82,54 @@ class Config:
     DEFAULT_VIDEO_PARTS = os.getenv('DEFAULT_VIDEO_PARTS', 'contentDetails,id,liveStreamingDetails,localizations,paidProductPlacementDetails,player,recordingDetails,snippet,statistics,status,topicDetails').split(',')
     
     @classmethod
+    def load_api_keys(cls):
+        """Load and validate YouTube API keys from environment variables."""
+        keys = []
+        
+        # Check for multiple keys (YOUTUBE_API_KEY_1, YOUTUBE_API_KEY_2, etc.)
+        key_index = 1
+        while True:
+            key = os.getenv(f'YOUTUBE_API_KEY_{key_index}', '')
+            if key:
+                keys.append(key.strip())
+                key_index += 1
+            else:
+                break
+        
+        # If no numbered keys found, check for comma-separated list
+        if not keys:
+            keys_env = os.getenv('YOUTUBE_API_KEYS', '')
+            if keys_env:
+                keys = [key.strip() for key in keys_env.split(',') if key.strip()]
+        
+        # Fallback to single key for backward compatibility
+        if not keys and cls.YOUTUBE_API_KEY:
+            keys = [cls.YOUTUBE_API_KEY]
+        
+        cls.YOUTUBE_API_KEYS = keys
+        return keys
+    
+    @classmethod
+    def validate_api_keys(cls):
+        """Validate that at least one API key is configured."""
+        if not cls.YOUTUBE_API_KEYS:
+            raise ValueError(
+                "No YouTube API keys configured. Please set YOUTUBE_API_KEY_1, "
+                "YOUTUBE_API_KEYS (comma-separated), or YOUTUBE_API_KEY environment variables."
+            )
+        return True
+    
+    @classmethod
     def validate(cls):
         """Validate required configuration"""
-        if not cls.YOUTUBE_API_KEY:
-            raise ValueError("YOUTUBE_API_KEY is required. Please set it in your .env file or environment variables.")
+        # Load and validate API keys
+        cls.load_api_keys()
+        cls.validate_api_keys()
         
-        if len(cls.YOUTUBE_API_KEY) < 30:
-            raise ValueError("YOUTUBE_API_KEY appears to be invalid. Please check your API key.")
+        # Validate each API key format
+        for i, key in enumerate(cls.YOUTUBE_API_KEYS):
+            if len(key) < 30:
+                raise ValueError(f"YouTube API key #{i+1} appears to be invalid. Please check your API keys.")
         
         return True
     

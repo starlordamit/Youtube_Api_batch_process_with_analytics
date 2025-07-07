@@ -12,6 +12,8 @@ import asyncio
 import aiohttp
 from concurrent.futures import ThreadPoolExecutor
 import re
+import random
+import threading
 from config import Config
 
 # Configure logging
@@ -28,6 +30,54 @@ class CacheEntry:
     
     def is_expired(self) -> bool:
         return datetime.now() > self.timestamp + timedelta(seconds=self.ttl)
+
+@dataclass
+class APIKeyStats:
+    """Track API key usage statistics"""
+    key_id: str
+    total_requests: int = 0
+    successful_requests: int = 0
+    failed_requests: int = 0
+    daily_requests: int = 0
+    hourly_requests: int = 0
+    last_used: Optional[datetime] = None
+    last_reset_daily: Optional[datetime] = None
+    last_reset_hourly: Optional[datetime] = None
+    is_exhausted: bool = False
+    
+    def reset_if_needed(self):
+        """Reset counters if time windows have passed"""
+        now = datetime.now()
+        
+        # Reset daily counter if it's a new day
+        if not self.last_reset_daily or now.date() > self.last_reset_daily.date():
+            self.daily_requests = 0
+            self.last_reset_daily = now
+            self.is_exhausted = False
+        
+        # Reset hourly counter if it's a new hour
+        if not self.last_reset_hourly or now.hour != self.last_reset_hourly.hour:
+            self.hourly_requests = 0
+            self.last_reset_hourly = now
+            self.is_exhausted = False
+    
+    def can_make_request(self, daily_quota: int, hourly_quota: int) -> bool:
+        """Check if this key can make another request"""
+        self.reset_if_needed()
+        return (not self.is_exhausted and 
+                self.daily_requests < daily_quota and 
+                self.hourly_requests < hourly_quota)
+    
+    def record_request(self, success: bool = True):
+        """Record a request made with this key"""
+        self.total_requests += 1
+        if success:
+            self.successful_requests += 1
+        else:
+            self.failed_requests += 1
+        self.daily_requests += 1
+        self.hourly_requests += 1
+        self.last_used = datetime.now()
 
 class SimpleCache:
     """Simple in-memory cache with TTL support"""
@@ -96,19 +146,44 @@ def cache_response(ttl: int = 3600):
     return decorator
 
 class YouTubeAPIHandler:
-    """Comprehensive YouTube API handler with caching and batch processing"""
+    """Comprehensive YouTube API handler with caching, batch processing, and API key rotation"""
     
     def __init__(self, api_key: str = None, cache_ttl: int = None, cache_enabled: bool = True):
-        self.api_key = api_key or Config.YOUTUBE_API_KEY
+        # Initialize logger first before using it
+        self.logger = logging.getLogger(__name__)
+        
+        # Load configuration and API keys
+        Config.load_api_keys()
+        
+        # API Key Management
+        if api_key:
+            # Single key provided (backward compatibility)
+            self.api_keys = [api_key]
+        else:
+            # Use multiple keys from config
+            self.api_keys = Config.YOUTUBE_API_KEYS.copy()
+        
+        if not self.api_keys:
+            raise ValueError("YouTube API key(s) are required. Please set YOUTUBE_API_KEY, YOUTUBE_API_KEYS, or YOUTUBE_API_KEY_1, etc.")
+        
+        # Key rotation configuration
+        self.rotation_strategy = Config.YOUTUBE_API_KEY_ROTATION_STRATEGY
+        self.daily_quota = Config.YOUTUBE_API_KEY_DAILY_QUOTA
+        self.hourly_quota = Config.YOUTUBE_API_KEY_HOURLY_QUOTA
+        
+        # Initialize key statistics and rotation
+        self.key_stats = {}
+        self.key_rotation_lock = threading.Lock()
+        self.current_key_index = 0
+        
+        for i, key in enumerate(self.api_keys):
+            self.key_stats[key] = APIKeyStats(key_id=f"key_{i+1}")
+        
+        # Basic configuration
         self.base_url = Config.YOUTUBE_API_BASE_URL
         self.cache = SimpleCache() if cache_enabled else None
         self.cache_ttl = cache_ttl or Config.DEFAULT_CACHE_TTL
         self.session = requests.Session()
-        
-        # Initialize logger first before using it
-        self.logger = logging.getLogger(__name__)
-        
-        # Set timeout for requests
         self.session.timeout = Config.REQUEST_TIMEOUT
         
         # Rate limiting
@@ -129,12 +204,105 @@ class YouTubeAPIHandler:
         # Load language mappings on initialization
         self.language_mappings = self._load_language_mappings()
         
-        # Validate API key
-        if not self.api_key:
-            raise ValueError("YouTube API key is required. Please set YOUTUBE_API_KEY in your .env file.")
-        
-        self.logger.info(f"YouTube API Handler initialized with base URL: {self.base_url}")
+        self.logger.info(f"YouTube API Handler initialized with {len(self.api_keys)} API key(s)")
+        self.logger.info(f"Key rotation strategy: {self.rotation_strategy}")
+        self.logger.info(f"Base URL: {self.base_url}")
         self.logger.info(f"Cache TTL: {self.cache_ttl}s, Rate limit: {self.min_request_interval}s")
+    
+    def _get_next_api_key(self) -> Optional[str]:
+        """Get the next API key based on the rotation strategy"""
+        with self.key_rotation_lock:
+            available_keys = []
+            
+            # Reset quotas if needed and find available keys
+            for key in self.api_keys:
+                stats = self.key_stats[key]
+                stats.reset_if_needed()
+                if stats.can_make_request(self.daily_quota, self.hourly_quota):
+                    available_keys.append(key)
+            
+            if not available_keys:
+                self.logger.warning("All API keys have reached their quota limits")
+                return None
+            
+            # Select key based on strategy
+            if self.rotation_strategy == 'round_robin':
+                return self._round_robin_selection(available_keys)
+            elif self.rotation_strategy == 'least_used':
+                return self._least_used_selection(available_keys)
+            elif self.rotation_strategy == 'random':
+                return random.choice(available_keys)
+            else:
+                self.logger.warning(f"Unknown rotation strategy: {self.rotation_strategy}, using round_robin")
+                return self._round_robin_selection(available_keys)
+    
+    def _round_robin_selection(self, available_keys: List[str]) -> str:
+        """Round-robin key selection"""
+        # Find the next available key starting from current index
+        start_index = self.current_key_index
+        for i in range(len(self.api_keys)):
+            key_index = (start_index + i) % len(self.api_keys)
+            key = self.api_keys[key_index]
+            if key in available_keys:
+                self.current_key_index = (key_index + 1) % len(self.api_keys)
+                return key
+        
+        # Fallback to first available key
+        return available_keys[0]
+    
+    def _least_used_selection(self, available_keys: List[str]) -> str:
+        """Select the least used key"""
+        min_requests = float('inf')
+        selected_key = available_keys[0]
+        
+        for key in available_keys:
+            stats = self.key_stats[key]
+            total_today = stats.daily_requests
+            if total_today < min_requests:
+                min_requests = total_today
+                selected_key = key
+        
+        return selected_key
+    
+    def _record_api_usage(self, api_key: str, success: bool = True):
+        """Record API usage for the given key"""
+        if api_key in self.key_stats:
+            self.key_stats[api_key].record_request(success)
+            
+            # Check if key is approaching limits
+            stats = self.key_stats[api_key]
+            daily_usage_pct = (stats.daily_requests / self.daily_quota) * 100
+            hourly_usage_pct = (stats.hourly_requests / self.hourly_quota) * 100
+            
+            if daily_usage_pct >= 90 or hourly_usage_pct >= 90:
+                self.logger.warning(f"API key {stats.key_id} approaching quota limits: "
+                                  f"Daily: {daily_usage_pct:.1f}%, Hourly: {hourly_usage_pct:.1f}%")
+    
+    def get_key_usage_stats(self) -> Dict[str, Dict]:
+        """Get usage statistics for all API keys"""
+        stats = {}
+        for key, key_stats in self.key_stats.items():
+            key_stats.reset_if_needed()
+            stats[key_stats.key_id] = {
+                'total_requests': key_stats.total_requests,
+                'successful_requests': key_stats.successful_requests,
+                'failed_requests': key_stats.failed_requests,
+                'daily_requests': key_stats.daily_requests,
+                'hourly_requests': key_stats.hourly_requests,
+                'daily_quota_used_pct': (key_stats.daily_requests / self.daily_quota) * 100,
+                'hourly_quota_used_pct': (key_stats.hourly_requests / self.hourly_quota) * 100,
+                'last_used': key_stats.last_used.isoformat() if key_stats.last_used else None,
+                'is_exhausted': key_stats.is_exhausted,
+                'can_make_request': key_stats.can_make_request(self.daily_quota, self.hourly_quota)
+            }
+        
+        return {
+            'rotation_strategy': self.rotation_strategy,
+            'total_keys': len(self.api_keys),
+            'daily_quota_per_key': self.daily_quota,
+            'hourly_quota_per_key': self.hourly_quota,
+            'key_stats': stats
+        }
     
     def _load_language_mappings(self) -> Dict[str, str]:
         """Load language code to name mappings from languagelist.json"""
@@ -189,28 +357,50 @@ class YouTubeAPIHandler:
         self.last_request_time = time.time()
     
     def _make_request(self, url: str, params: Dict[str, Any] = None) -> Optional[Dict]:
-        """Make HTTP request with error handling"""
+        """Make HTTP request with error handling and API key rotation"""
+        current_api_key = None
+        
         try:
             self._rate_limit()
             
+            # Get the next available API key
+            current_api_key = self._get_next_api_key()
+            if not current_api_key:
+                self.logger.error("No available API keys - all quota limits reached")
+                return None
+            
             if params is None:
                 params = {}
-            params['key'] = self.api_key
+            params['key'] = current_api_key
             
             response = self.session.get(url, params=params)
             response.raise_for_status()
             
+            # Record successful API usage
+            if current_api_key:
+                self._record_api_usage(current_api_key, success=True)
+            
             return response.json()
             
         except requests.exceptions.HTTPError as e:
+            # Record failed API usage
+            if current_api_key:
+                self._record_api_usage(current_api_key, success=False)
+            
             self.logger.error(f"HTTP error: {e}")
-            if response.status_code == 429:
+            if 'response' in locals() and response.status_code == 429:
                 self.logger.warning("Rate limit exceeded, waiting...")
                 time.sleep(1)
                 return self._make_request(url, params)
         except requests.exceptions.RequestException as e:
+            # Record failed API usage
+            if current_api_key:
+                self._record_api_usage(current_api_key, success=False)
             self.logger.error(f"Request error: {e}")
         except json.JSONDecodeError as e:
+            # Record failed API usage 
+            if current_api_key:
+                self._record_api_usage(current_api_key, success=False)
             self.logger.error(f"JSON decode error: {e}")
         
         return None

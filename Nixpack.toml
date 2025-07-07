@@ -19,8 +19,9 @@ ENABLE_METRICS = "true"
 ENABLE_CACHING = "true"
 CACHE_DURATION = "1800"
 
+
 [start]
-cmd = "gunicorn --bind $HOST:$PORT --workers $WORKERS --timeout $TIMEOUT --keepalive $KEEPALIVE --access-logfile logs/access.log --error-logfile logs/error.log api_server:app"
+cmd = "gunicorn --bind 0.0.0.0:$PORT --workers $WORKERS --timeout $TIMEOUT --keepalive $KEEPALIVE --access-logfile logs/access.log --error-logfile logs/error.log api_server:app"
 
 [setup]
 cmds = [

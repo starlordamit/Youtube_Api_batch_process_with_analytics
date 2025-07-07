@@ -133,21 +133,8 @@ dmypy.json
 cython_debug/
 
 # === LOGS AND MONITORING ===
-# Log files (but keep directory structure)
-logs/*.log
-logs/*.log.*
-*.log
-*.log.*
-log/
-*.out
-*.err
-access.log*
-error.log*
-api.log*
-debug.log*
-audit.log*
-
-# Keep directory structure
+# No log files - using SQLite logging and console output only
+# Keep logs directory for SQLite database
 !logs/.gitkeep
 
 # Monitoring and metrics

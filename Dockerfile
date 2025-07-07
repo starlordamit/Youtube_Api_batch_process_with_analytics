@@ -31,9 +31,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Create necessary directories and set permissions
-RUN mkdir -p logs tmp cache && \
-    touch logs/.gitkeep && \
+# Create necessary directories and set permissions  
+RUN mkdir -p tmp cache && \
     chown -R appuser:appuser /app
 
 # Switch to non-root user

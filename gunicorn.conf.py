@@ -19,9 +19,9 @@ keepalive = Config.KEEPALIVE
 preload_app = True
 enable_stdio_inheritance = True
 
-# Logging
-accesslog = Config.ACCESS_LOG_FILE
-errorlog = Config.ERROR_LOG_FILE
+# Logging - Output to stdout/stderr (no log files)
+accesslog = '-'  # stdout
+errorlog = '-'   # stderr
 loglevel = Config.LOG_LEVEL.lower()
 access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s" %(D)s'
 

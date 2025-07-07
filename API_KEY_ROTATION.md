@@ -242,7 +242,7 @@ Check the system logs for detailed rotation information:
 docker logs youtube-api-container
 
 # Manual deployment
-tail -f logs/api.log
+curl http://localhost:8000/api/logs
 ```
 
 ## API Integration

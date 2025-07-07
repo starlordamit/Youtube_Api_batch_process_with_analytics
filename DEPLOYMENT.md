@@ -217,10 +217,10 @@ MAX_REQUESTS=2000
 sudo journalctl -u youtube-api -f
 
 # View access logs
-tail -f /opt/youtube-api/logs/access.log
+docker logs -f youtube-api
 
 # View error logs
-tail -f /opt/youtube-api/logs/error.log
+docker logs -f --stderr youtube-api
 ```
 
 ### Metrics Collection
@@ -280,7 +280,7 @@ sudo systemctl start youtube-api
 ```
 
 ### Log Rotation
-Logs are automatically rotated based on size (10MB) and count (5 files).
+Logs are output to console and stored in SQLite database for API access.
 
 ### Database Cleanup (if applicable)
 ```bash

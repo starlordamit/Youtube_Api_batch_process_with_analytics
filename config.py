@@ -68,11 +68,7 @@ class Config:
     # Logging Configuration
     LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
     LOG_FORMAT = os.getenv('LOG_FORMAT', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    LOG_FILE = os.getenv('LOG_FILE', 'logs/api.log')
-    LOG_MAX_SIZE = int(os.getenv('LOG_MAX_SIZE', '10485760'))  # 10MB
-    LOG_BACKUP_COUNT = int(os.getenv('LOG_BACKUP_COUNT', '5'))
-    ACCESS_LOG_FILE = os.getenv('ACCESS_LOG_FILE', 'logs/access.log')
-    ERROR_LOG_FILE = os.getenv('ERROR_LOG_FILE', 'logs/error.log')
+    # Note: All logging now uses SQLite database and console output only
     
     # Request Timeout Configuration
     REQUEST_TIMEOUT = int(os.getenv('REQUEST_TIMEOUT', '30'))  # 30 seconds

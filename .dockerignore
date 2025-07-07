@@ -23,8 +23,7 @@ API_KEY_ROTATION.md
 
 # === LOGS ===
 logs/
-*.log
-*.log.*
+# No log files - using console output
 
 # === PYTHON ===
 __pycache__/
@@ -77,5 +76,4 @@ temp/
 
 # === NODE.JS ===
 node_modules/
-npm-debug.log*
-yarn-debug.log* 
+# Node.js logs not applicable for Python API 

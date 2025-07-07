@@ -1,0 +1,1826 @@
+GET URL: https://www.googleapis.com/youtube/v3/channels?part=contentDetails,localizations,snippet,statistics,status,topicDetails&forHandle=@BongPosto&key=AIzaSyCVYe70l1GTDIDJf2EDWBupbIpUhLohA-4
+
+response:
+{
+    "kind": "youtube#channelListResponse",
+    "etag": "2McpqJASLu_Qwj51PSonze2iTv0",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#channel",
+            "etag": "hSRCxyEUOSHSR0l5ej1O-WR7yxE",
+            "id": "UCMlzi5avz-Bcn_1A_w-M5cg",
+            "snippet": {
+                "title": "Bong Posto",
+                "description": "Basically Bong Posto is a fun loving bengali girl's channel. I love to talk with people and love to try new things . So here I am to entertain you people with my work. Please support me\n\nFor businesses enquiry : bongposto3@gmail.com\n",
+                "customUrl": "@bongposto",
+                "publishedAt": "2016-12-14T09:00:55Z",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/v27K2HOAI34cXQv0gucBlbOx1pmXRq7VwrSDQ7oG8RKljAOr6IozxJ_md0e6nw_ng9mgNN_10w=s88-c-k-c0x00ffffff-no-rj",
+                        "width": 88,
+                        "height": 88
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/v27K2HOAI34cXQv0gucBlbOx1pmXRq7VwrSDQ7oG8RKljAOr6IozxJ_md0e6nw_ng9mgNN_10w=s240-c-k-c0x00ffffff-no-rj",
+                        "width": 240,
+                        "height": 240
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/v27K2HOAI34cXQv0gucBlbOx1pmXRq7VwrSDQ7oG8RKljAOr6IozxJ_md0e6nw_ng9mgNN_10w=s800-c-k-c0x00ffffff-no-rj",
+                        "width": 800,
+                        "height": 800
+                    }
+                },
+                "localized": {
+                    "title": "Bong Posto",
+                    "description": "Basically Bong Posto is a fun loving bengali girl's channel. I love to talk with people and love to try new things . So here I am to entertain you people with my work. Please support me\n\nFor businesses enquiry : bongposto3@gmail.com\n"
+                },
+                "country": "IN"
+            },
+            "contentDetails": {
+                "relatedPlaylists": {
+                    "likes": "",
+                    "uploads": "UUMlzi5avz-Bcn_1A_w-M5cg"
+                }
+            },
+            "statistics": {
+                "viewCount": "2542835345",
+                "subscriberCount": "5230000",
+                "hiddenSubscriberCount": false,
+                "videoCount": "344"
+            },
+            "topicDetails": {
+                "topicIds": [
+                    "/m/019_rr",
+                    "/m/02jjt",
+                    "/m/02vxn"
+                ],
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)",
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "status": {
+                "privacyStatus": "public",
+                "isLinked": true,
+                "longUploadsStatus": "longUploadsUnspecified",
+                "madeForKids": false
+            }
+        }
+    ]
+}
+
+
+GET URL : https://www.youtube.com/feeds/videos.xml?channel_id=UCMlzi5avz-Bcn_1A_w-M5cg
+
+response:
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+<link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UCMlzi5avz-Bcn_1A_w-M5cg"/>
+<id>yt:channel:Mlzi5avz-Bcn_1A_w-M5cg</id>
+<yt:channelId>Mlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Bong Posto</title>
+<link rel="alternate" href="https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2016-12-14T09:00:55+00:00</published>
+<entry>
+<id>yt:video:9hMz-55SBcc</id>
+<yt:videoId>9hMz-55SBcc</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Every parar parlour wali didi 🧖‍♀️💆‍♀️#bongposto #funny #comedy #youtubeshorts #parlour</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/9hMz-55SBcc"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-06-23T07:49:21+00:00</published>
+<updated>2025-06-25T21:31:23+00:00</updated>
+<media:group>
+<media:title>Every parar parlour wali didi 🧖‍♀️💆‍♀️#bongposto #funny #comedy #youtubeshorts #parlour</media:title>
+<media:content url="https://www.youtube.com/v/9hMz-55SBcc?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i2.ytimg.com/vi/9hMz-55SBcc/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="138369" average="5.00" min="1" max="5"/>
+<media:statistics views="4627997"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:RUwKcUOdffU</id>
+<yt:videoId>RUwKcUOdffU</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/RUwKcUOdffU"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-06-13T07:30:17+00:00</published>
+<updated>2025-06-15T06:46:58+00:00</updated>
+<media:group>
+<media:title>শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma</media:title>
+<media:content url="https://www.youtube.com/v/RUwKcUOdffU?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i3.ytimg.com/vi/RUwKcUOdffU/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="105564" average="5.00" min="1" max="5"/>
+<media:statistics views="2622980"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:RGFtyK1yf2A</id>
+<yt:videoId>RGFtyK1yf2A</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Free Tickets 🤩 || #bongposto #funny #family</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=RGFtyK1yf2A"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-05-25T18:21:17+00:00</published>
+<updated>2025-05-29T11:09:23+00:00</updated>
+<media:group>
+<media:title>Free Tickets 🤩 || #bongposto #funny #family</media:title>
+<media:content url="https://www.youtube.com/v/RGFtyK1yf2A?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i3.ytimg.com/vi/RGFtyK1yf2A/hqdefault.jpg" width="480" height="360"/>
+<media:description>Download Duolingo for free - https://app.adjust.net.in/2iifg9v</media:description>
+<media:community>
+<media:starRating count="40456" average="5.00" min="1" max="5"/>
+<media:statistics views="2342705"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:Kk_r7dacNIs</id>
+<yt:videoId>Kk_r7dacNIs</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Summer 🍉⛱️ Childhood vs Now || #bongposto #funny #comedy #childhoodmemories</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=Kk_r7dacNIs"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-05-01T12:52:45+00:00</published>
+<updated>2025-06-06T14:15:58+00:00</updated>
+<media:group>
+<media:title>Summer 🍉⛱️ Childhood vs Now || #bongposto #funny #comedy #childhoodmemories</media:title>
+<media:content url="https://www.youtube.com/v/Kk_r7dacNIs?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i4.ytimg.com/vi/Kk_r7dacNIs/hqdefault.jpg" width="480" height="360"/>
+<media:description>#Ad Get this amazing product on Amazon today and enjoy great discounts! Amazon: https://bit.ly/4jpZW8I #Himalaya</media:description>
+<media:community>
+<media:starRating count="33570" average="5.00" min="1" max="5"/>
+<media:statistics views="2619910"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:gP-6IJ-duBw</id>
+<yt:videoId>gP-6IJ-duBw</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Random Thoughts We All Have 😬 ||#bongposto #comedy #funny</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=gP-6IJ-duBw"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-04-14T04:39:13+00:00</published>
+<updated>2025-06-07T11:10:37+00:00</updated>
+<media:group>
+<media:title>Random Thoughts We All Have 😬 ||#bongposto #comedy #funny</media:title>
+<media:content url="https://www.youtube.com/v/gP-6IJ-duBw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i4.ytimg.com/vi/gP-6IJ-duBw/hqdefault.jpg" width="480" height="360"/>
+<media:description>You can purchase the product in my video 😍✨ by clicking on the link below: Alps Goodness Rosemary Water (100 ml) | Rosemary water for hair | Hair Spray for Regrowth | Hair Growth Expert | Viral Rinse | Bestselling Spray https://mlpl.link/CEbT9INF</media:description>
+<media:community>
+<media:starRating count="35852" average="5.00" min="1" max="5"/>
+<media:statistics views="1603440"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:jwjLGVtTKUQ</id>
+<yt:videoId>jwjLGVtTKUQ</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>when shoes are more important 😂 || #bongposto #comedy #funny concept @rinkeytamang900</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/jwjLGVtTKUQ"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-04-11T11:27:44+00:00</published>
+<updated>2025-06-05T04:08:32+00:00</updated>
+<media:group>
+<media:title>when shoes are more important 😂 || #bongposto #comedy #funny concept @rinkeytamang900</media:title>
+<media:content url="https://www.youtube.com/v/jwjLGVtTKUQ?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i3.ytimg.com/vi/jwjLGVtTKUQ/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="214038" average="5.00" min="1" max="5"/>
+<media:statistics views="16525386"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:0TNAfIOmyrc</id>
+<yt:videoId>0TNAfIOmyrc</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>This Pohela Boishakh, shop bright outfits & let @sunlightindia keep them bright like new ✨ #AD</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/0TNAfIOmyrc"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-04-01T12:48:38+00:00</published>
+<updated>2025-06-11T17:06:18+00:00</updated>
+<media:group>
+<media:title>This Pohela Boishakh, shop bright outfits & let @sunlightindia keep them bright like new ✨ #AD</media:title>
+<media:content url="https://www.youtube.com/v/0TNAfIOmyrc?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i1.ytimg.com/vi/0TNAfIOmyrc/hqdefault.jpg" width="480" height="360"/>
+<media:description>✅ New Year’s clothes will never look old! Get yours today! #Ad #Pohelabaishak #Sunlightdetergent #Sunlight #brightlikenew #Clamzymedia (laundry finds, homecare finds, liquid detergent, laundry tips, homecare hack, Laundry Favorites, bright clothes, maintains brightness, amazon finds, amazon homecare, Sunlight detergent)</media:description>
+<media:community>
+<media:starRating count="134307" average="5.00" min="1" max="5"/>
+<media:statistics views="4904943"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:j--hpfXbnmw</id>
+<yt:videoId>j--hpfXbnmw</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>যখন পড়বে না মোর 🌿 || স্বপ্ন হলেও সত্যি || Music Video || Rabindra Sangeet | Katha Dutta</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=j--hpfXbnmw"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-03-31T08:14:55+00:00</published>
+<updated>2025-05-24T18:13:06+00:00</updated>
+<media:group>
+<media:title>যখন পড়বে না মোর 🌿 || স্বপ্ন হলেও সত্যি || Music Video || Rabindra Sangeet | Katha Dutta</media:title>
+<media:content url="https://www.youtube.com/v/j--hpfXbnmw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i3.ytimg.com/vi/j--hpfXbnmw/hqdefault.jpg" width="480" height="360"/>
+<media:description>Lyrics & Composition- Rabindranath Tagore Singer - Katha Dutta Music - Souptik Mallick #bongposto #music #goynarbaksho</media:description>
+<media:community>
+<media:starRating count="57947" average="5.00" min="1" max="5"/>
+<media:statistics views="2033178"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:ctYQ_NChFj0</id>
+<yt:videoId>ctYQ_NChFj0</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>স্বপ্ন হলেও সত্যি ✨ || গয়নার বাক্স part 2 || #bongposto #funny #goynarbaksho</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=ctYQ_NChFj0"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-03-31T07:00:11+00:00</published>
+<updated>2025-06-11T18:16:34+00:00</updated>
+<media:group>
+<media:title>স্বপ্ন হলেও সত্যি ✨ || গয়নার বাক্স part 2 || #bongposto #funny #goynarbaksho</media:title>
+<media:content url="https://www.youtube.com/v/ctYQ_NChFj0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i4.ytimg.com/vi/ctYQ_NChFj0/hqdefault.jpg" width="480" height="360"/>
+<media:description>Checkout Mamaearth's amazing Tea Tree Oil Control Facewash: Mamaearth Link: https://bit.ly/3F2fVev Amazon Link: https://amzn.to/4brdCxM Flipkart Link: https://bit.ly/3Xpzrrv Nykaa Link: https://bit.ly/3F0gd5A Purplle Link: https://bit.ly/3XjY6Oo</media:description>
+<media:community>
+<media:starRating count="130437" average="5.00" min="1" max="5"/>
+<media:statistics views="6250907"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:nRnllFs7QgI</id>
+<yt:videoId>nRnllFs7QgI</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Mom Vs Daughter 😂#bongposto #funny #comedy #momdaughter #youtubeshorts #shorts #shortvideo</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/nRnllFs7QgI"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-03-18T14:30:11+00:00</published>
+<updated>2025-06-14T06:32:10+00:00</updated>
+<media:group>
+<media:title>Mom Vs Daughter 😂#bongposto #funny #comedy #momdaughter #youtubeshorts #shorts #shortvideo</media:title>
+<media:content url="https://www.youtube.com/v/nRnllFs7QgI?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i3.ytimg.com/vi/nRnllFs7QgI/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="188934" average="5.00" min="1" max="5"/>
+<media:statistics views="4703875"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:yv_AUnxECtg</id>
+<yt:videoId>yv_AUnxECtg</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Amader Full Cinematic wedding Video ☺️ || Payel weds Abhik 😘 || #wedding</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=yv_AUnxECtg"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-03-18T06:29:07+00:00</published>
+<updated>2025-06-13T01:31:13+00:00</updated>
+<media:group>
+<media:title>Amader Full Cinematic wedding Video ☺️ || Payel weds Abhik 😘 || #wedding</media:title>
+<media:content url="https://www.youtube.com/v/yv_AUnxECtg?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i2.ytimg.com/vi/yv_AUnxECtg/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="25668" average="5.00" min="1" max="5"/>
+<media:statistics views="578844"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:lzWpmizdRZM</id>
+<yt:videoId>lzWpmizdRZM</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>MOMS IN HOLI BE LIKE 🤣|| #bongposto #funny #bongali #holi</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/lzWpmizdRZM"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-03-13T12:53:25+00:00</published>
+<updated>2025-06-14T17:58:27+00:00</updated>
+<media:group>
+<media:title>MOMS IN HOLI BE LIKE 🤣|| #bongposto #funny #bongali #holi</media:title>
+<media:content url="https://www.youtube.com/v/lzWpmizdRZM?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i1.ytimg.com/vi/lzWpmizdRZM/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="89311" average="5.00" min="1" max="5"/>
+<media:statistics views="1441298"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:tOUG4C7ucUI</id>
+<yt:videoId>tOUG4C7ucUI</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/tOUG4C7ucUI"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-03-09T05:06:33+00:00</published>
+<updated>2025-06-12T17:00:17+00:00</updated>
+<media:group>
+<media:title>শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma</media:title>
+<media:content url="https://www.youtube.com/v/tOUG4C7ucUI?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i1.ytimg.com/vi/tOUG4C7ucUI/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="106517" average="5.00" min="1" max="5"/>
+<media:statistics views="1710000"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:7Y41U-HK0LM</id>
+<yt:videoId>7Y41U-HK0LM</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>Every Teacher In exam Hall 🥲 || #bongposto #funny #comedy</title>
+<link rel="alternate" href="https://www.youtube.com/shorts/7Y41U-HK0LM"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-03-06T04:56:29+00:00</published>
+<updated>2025-05-20T02:39:06+00:00</updated>
+<media:group>
+<media:title>Every Teacher In exam Hall 🥲 || #bongposto #funny #comedy</media:title>
+<media:content url="https://www.youtube.com/v/7Y41U-HK0LM?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i4.ytimg.com/vi/7Y41U-HK0LM/hqdefault.jpg" width="480" height="360"/>
+<media:description/>
+<media:community>
+<media:starRating count="138636" average="5.00" min="1" max="5"/>
+<media:statistics views="2284637"/>
+</media:community>
+</media:group>
+</entry>
+<entry>
+<id>yt:video:bv6tkjbswkI</id>
+<yt:videoId>bv6tkjbswkI</yt:videoId>
+<yt:channelId>UCMlzi5avz-Bcn_1A_w-M5cg</yt:channelId>
+<title>গয়নার বাক্স 🎁 || #funny #bongposto #comedy #treasurehunt #suspense</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=bv6tkjbswkI"/>
+<author>
+<name>Bong Posto</name>
+<uri>https://www.youtube.com/channel/UCMlzi5avz-Bcn_1A_w-M5cg</uri>
+</author>
+<published>2025-01-27T05:27:12+00:00</published>
+<updated>2025-06-11T08:41:55+00:00</updated>
+<media:group>
+<media:title>গয়নার বাক্স 🎁 || #funny #bongposto #comedy #treasurehunt #suspense</media:title>
+<media:content url="https://www.youtube.com/v/bv6tkjbswkI?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+<media:thumbnail url="https://i3.ytimg.com/vi/bv6tkjbswkI/hqdefault.jpg" width="480" height="360"/>
+<media:description>You can purchase the product in my video 😍✨ by clicking on the link below: Alps Goodness Rosemary Water (100 ml) | Rosemary water for hair | Hair Spray for Regrowth | Hair Growth Expert | Viral Rinse | Bestselling Spray https://mlpl.link/6m39PINF Story By Team Bong Posto Copyright ©️ @BongPosto Special Appearance- Raunak Dalui Tumbnail by - @itsbhaiya7675</media:description>
+<media:community>
+<media:starRating count="102820" average="5.00" min="1" max="5"/>
+<media:statistics views="7500743"/>
+</media:community>
+</media:group>
+</entry>
+</feed>
+
+
+
+GET curl --location 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Cid%2CliveStreamingDetails%2Clocalizations%2CpaidProductPlacementDetails%2Cplayer%2CrecordingDetails%2Csnippet%2Cstatistics%2Cstatus%2CtopicDetails&id=9hMz-55SBcc%2CRUwKcUOdffU%2CRGFtyK1yf2A%2CKk_r7dacNIs%2CgP-6IJ-duBw%2CjwjLGVtTKUQ%2C0TNAfIOmyrc%2Cj--hpfXbnmw%2CctYQ_NChFj0%2CnRnllFs7QgI%2Cyv_AUnxECtg%2ClzWpmizdRZM%2CtOUG4C7ucUI%2C7Y41U-HK0LM%2Cbv6tkjbswkI&key=AIzaSyCVYe70l1GTDIDJf2EDWBupbIpUhLohA-4'
+
+response: 
+{
+    "kind": "youtube#videoListResponse",
+    "etag": "vtuylzYvpQlkFKRqfSVQAT9bwTU",
+    "items": [
+        {
+            "kind": "youtube#video",
+            "etag": "WtbdtLbBBhGeE-mgCbjtDWZ7YfQ",
+            "id": "9hMz-55SBcc",
+            "snippet": {
+                "publishedAt": "2025-06-23T07:49:21Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "Every parar parlour wali didi 🧖‍♀️💆‍♀️#bongposto #funny #comedy #youtubeshorts #parlour",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/9hMz-55SBcc/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/9hMz-55SBcc/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/9hMz-55SBcc/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/9hMz-55SBcc/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/9hMz-55SBcc/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Every parar parlour wali didi 🧖‍♀️💆‍♀️#bongposto #funny #comedy #youtubeshorts #parlour",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT1M47S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "4631547",
+                "likeCount": "138538",
+                "favoriteCount": "0",
+                "commentCount": "766"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/9hMz-55SBcc\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Humour",
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "6m-34x7hIfnOqAkb9xEkrdO54Gw",
+            "id": "RUwKcUOdffU",
+            "snippet": {
+                "publishedAt": "2025-06-13T07:30:17Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/RUwKcUOdffU/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/RUwKcUOdffU/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/RUwKcUOdffU/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/RUwKcUOdffU/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/RUwKcUOdffU/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT2M",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "2623605",
+                "likeCount": "105598",
+                "favoriteCount": "0",
+                "commentCount": "825"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/RUwKcUOdffU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film",
+                    "https://en.wikipedia.org/wiki/Humour"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "GzDg1Y4cM7pWd1AJ0GBEPlJqoAk",
+            "id": "RGFtyK1yf2A",
+            "snippet": {
+                "publishedAt": "2025-05-25T18:21:17Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "Free Tickets 🤩 || #bongposto #funny #family",
+                "description": "Download Duolingo for free - https://app.adjust.net.in/2iifg9v",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/RGFtyK1yf2A/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/RGFtyK1yf2A/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/RGFtyK1yf2A/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/RGFtyK1yf2A/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/RGFtyK1yf2A/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Free Tickets 🤩 || #bongposto #funny #family",
+                    "description": "Download Duolingo for free - https://app.adjust.net.in/2iifg9v"
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT13M41S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "2343925",
+                "likeCount": "40469",
+                "favoriteCount": "0",
+                "commentCount": "6201"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/RGFtyK1yf2A\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "oq34TRBGQRkjHEjtMeVF3ilrTdA",
+            "id": "Kk_r7dacNIs",
+            "snippet": {
+                "publishedAt": "2025-05-01T12:52:45Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "Summer 🍉⛱️ Childhood vs Now  || #bongposto #funny #comedy #childhoodmemories",
+                "description": "#Ad\n\nGet this amazing product on Amazon today and enjoy great discounts!\nAmazon: https://bit.ly/4jpZW8I\n\n#Himalaya",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/Kk_r7dacNIs/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/Kk_r7dacNIs/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/Kk_r7dacNIs/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/Kk_r7dacNIs/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/Kk_r7dacNIs/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Summer 🍉⛱️ Childhood vs Now  || #bongposto #funny #comedy #childhoodmemories",
+                    "description": "#Ad\n\nGet this amazing product on Amazon today and enjoy great discounts!\nAmazon: https://bit.ly/4jpZW8I\n\n#Himalaya"
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT8M15S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "2620648",
+                "likeCount": "33572",
+                "favoriteCount": "0",
+                "commentCount": "2491"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/Kk_r7dacNIs\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "0D1x88x50pjGFkaIuimfyDZWd1o",
+            "id": "gP-6IJ-duBw",
+            "snippet": {
+                "publishedAt": "2025-04-14T04:39:13Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "Random Thoughts We All Have 😬 ||#bongposto #comedy #funny",
+                "description": "You can purchase the product in my video 😍✨ by clicking on the link below:\n\nAlps Goodness Rosemary Water (100 ml) | Rosemary water for hair | Hair Spray for Regrowth | Hair Growth Expert | Viral Rinse | Bestselling Spray\n\nhttps://mlpl.link/CEbT9INF",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/gP-6IJ-duBw/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/gP-6IJ-duBw/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/gP-6IJ-duBw/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/gP-6IJ-duBw/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/gP-6IJ-duBw/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Random Thoughts We All Have 😬 ||#bongposto #comedy #funny",
+                    "description": "You can purchase the product in my video 😍✨ by clicking on the link below:\n\nAlps Goodness Rosemary Water (100 ml) | Rosemary water for hair | Hair Spray for Regrowth | Hair Growth Expert | Viral Rinse | Bestselling Spray\n\nhttps://mlpl.link/CEbT9INF"
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT7M26S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "1603923",
+                "likeCount": "35854",
+                "favoriteCount": "0",
+                "commentCount": "3341"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/gP-6IJ-duBw\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "SfIkIk80Y4pigCFFDlkdjQDiQsw",
+            "id": "jwjLGVtTKUQ",
+            "snippet": {
+                "publishedAt": "2025-04-11T11:27:44Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "when shoes are more important 😂 || #bongposto #comedy #funny concept @rinkeytamang900",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/jwjLGVtTKUQ/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/jwjLGVtTKUQ/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/jwjLGVtTKUQ/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/jwjLGVtTKUQ/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/jwjLGVtTKUQ/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "when shoes are more important 😂 || #bongposto #comedy #funny concept @rinkeytamang900",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT16S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "16526452",
+                "likeCount": "214062",
+                "favoriteCount": "0",
+                "commentCount": "1084"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/jwjLGVtTKUQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "M1MksnJtYtoSAJ5VPV1_Vdft2Pw",
+            "id": "0TNAfIOmyrc",
+            "snippet": {
+                "publishedAt": "2025-04-01T12:48:38Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "This Pohela Boishakh, shop bright outfits & let @sunlightindia keep them bright like new ✨ #AD",
+                "description": "✅ New Year’s clothes will never look old!\n\nGet yours today!\n\n#Ad #Pohelabaishak #Sunlightdetergent #Sunlight #brightlikenew #Clamzymedia\n\n(laundry finds, homecare finds, liquid detergent, laundry tips, homecare hack, Laundry Favorites, bright clothes, maintains brightness, amazon finds, amazon homecare, Sunlight detergent)",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/0TNAfIOmyrc/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/0TNAfIOmyrc/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/0TNAfIOmyrc/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/0TNAfIOmyrc/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/0TNAfIOmyrc/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "This Pohela Boishakh, shop bright outfits & let @sunlightindia keep them bright like new ✨ #AD",
+                    "description": "✅ New Year’s clothes will never look old!\n\nGet yours today!\n\n#Ad #Pohelabaishak #Sunlightdetergent #Sunlight #brightlikenew #Clamzymedia\n\n(laundry finds, homecare finds, liquid detergent, laundry tips, homecare hack, Laundry Favorites, bright clothes, maintains brightness, amazon finds, amazon homecare, Sunlight detergent)"
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT1M14S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "4905560",
+                "likeCount": "134321",
+                "favoriteCount": "0",
+                "commentCount": "492"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/0TNAfIOmyrc\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Fashion",
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "qOyUNtSCZipOMVdV9LQsOO5fBBc",
+            "id": "j--hpfXbnmw",
+            "snippet": {
+                "publishedAt": "2025-03-31T08:14:55Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "যখন পড়বে না মোর 🌿  || স্বপ্ন হলেও সত্যি || Music Video || Rabindra Sangeet | Katha Dutta",
+                "description": "Lyrics & Composition- Rabindranath Tagore\nSinger - Katha Dutta \nMusic - Souptik Mallick\n\n\n\n\n\n\n#bongposto #music #goynarbaksho",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/j--hpfXbnmw/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/j--hpfXbnmw/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/j--hpfXbnmw/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/j--hpfXbnmw/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/j--hpfXbnmw/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "যখন পড়বে না মোর 🌿  || স্বপ্ন হলেও সত্যি || Music Video || Rabindra Sangeet | Katha Dutta",
+                    "description": "Lyrics & Composition- Rabindranath Tagore\nSinger - Katha Dutta \nMusic - Souptik Mallick\n\n\n\n\n\n\n#bongposto #music #goynarbaksho"
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT2M22S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "2033516",
+                "likeCount": "57952",
+                "favoriteCount": "0",
+                "commentCount": "3264"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/j--hpfXbnmw\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Music",
+                    "https://en.wikipedia.org/wiki/Music_of_Asia"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "sVvmmGUXCJXkx6YV8L_gFDCOIeo",
+            "id": "ctYQ_NChFj0",
+            "snippet": {
+                "publishedAt": "2025-03-31T07:00:11Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "স্বপ্ন হলেও সত্যি ✨ || গয়নার বাক্স part 2 || #bongposto #funny #goynarbaksho",
+                "description": "Checkout Mamaearth's amazing Tea Tree Oil Control Facewash:\n\nMamaearth Link:\nhttps://bit.ly/3F2fVev\n\nAmazon Link:\nhttps://amzn.to/4brdCxM\n\nFlipkart Link:\nhttps://bit.ly/3Xpzrrv\n\nNykaa Link: \nhttps://bit.ly/3F0gd5A\n\nPurplle Link:\nhttps://bit.ly/3XjY6Oo",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/ctYQ_NChFj0/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/ctYQ_NChFj0/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/ctYQ_NChFj0/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/ctYQ_NChFj0/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/ctYQ_NChFj0/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "স্বপ্ন হলেও সত্যি ✨ || গয়নার বাক্স part 2 || #bongposto #funny #goynarbaksho",
+                    "description": "Checkout Mamaearth's amazing Tea Tree Oil Control Facewash:\n\nMamaearth Link:\nhttps://bit.ly/3F2fVev\n\nAmazon Link:\nhttps://amzn.to/4brdCxM\n\nFlipkart Link:\nhttps://bit.ly/3Xpzrrv\n\nNykaa Link: \nhttps://bit.ly/3F0gd5A\n\nPurplle Link:\nhttps://bit.ly/3XjY6Oo"
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT35M10S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "6252366",
+                "likeCount": "130451",
+                "favoriteCount": "0",
+                "commentCount": "23532"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/ctYQ_NChFj0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "recordingDetails": {},
+            "liveStreamingDetails": {
+                "actualStartTime": "2025-03-31T07:00:11Z",
+                "actualEndTime": "2025-03-31T07:37:47Z",
+                "scheduledStartTime": "2025-03-31T07:00:00Z"
+            },
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "7B6KP4S4gIFDvtV-UgH4vJkuWBQ",
+            "id": "nRnllFs7QgI",
+            "snippet": {
+                "publishedAt": "2025-03-18T14:30:11Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "Mom Vs Daughter 😂#bongposto #funny #comedy #momdaughter #youtubeshorts #shorts #shortvideo",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/nRnllFs7QgI/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/nRnllFs7QgI/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/nRnllFs7QgI/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/nRnllFs7QgI/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/nRnllFs7QgI/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Mom Vs Daughter 😂#bongposto #funny #comedy #momdaughter #youtubeshorts #shorts #shortvideo",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT58S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "4704342",
+                "likeCount": "188951",
+                "favoriteCount": "0",
+                "commentCount": "582"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/nRnllFs7QgI\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "3qu8F7CC6ykkmA4kJiZQ6zCpPtc",
+            "id": "yv_AUnxECtg",
+            "snippet": {
+                "publishedAt": "2025-03-18T06:29:07Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "Amader Full Cinematic wedding Video ☺️ || Payel weds Abhik 😘 || #wedding",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/yv_AUnxECtg/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/yv_AUnxECtg/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/yv_AUnxECtg/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/yv_AUnxECtg/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/yv_AUnxECtg/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Amader Full Cinematic wedding Video ☺️ || Payel weds Abhik 😘 || #wedding",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT42M13S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": false,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "578956",
+                "likeCount": "25670",
+                "favoriteCount": "0",
+                "commentCount": "1271"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/yv_AUnxECtg\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)",
+                    "https://en.wikipedia.org/wiki/Music_of_Asia"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "D0SdJoV_TFFSqnlu3drcEcHu_z8",
+            "id": "lzWpmizdRZM",
+            "snippet": {
+                "publishedAt": "2025-03-13T12:53:25Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "MOMS IN HOLI BE LIKE 🤣|| #bongposto #funny #bongali #holi",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/lzWpmizdRZM/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/lzWpmizdRZM/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/lzWpmizdRZM/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/lzWpmizdRZM/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/lzWpmizdRZM/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "MOMS IN HOLI BE LIKE 🤣|| #bongposto #funny #bongali #holi",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT1M51S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "1441470",
+                "likeCount": "89319",
+                "favoriteCount": "0",
+                "commentCount": "614"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/lzWpmizdRZM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "SHi-KAWOjehK7n-Yfqy1YRh6Mmo",
+            "id": "tOUG4C7ucUI",
+            "snippet": {
+                "publishedAt": "2025-03-09T05:06:33Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/tOUG4C7ucUI/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/tOUG4C7ucUI/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/tOUG4C7ucUI/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/tOUG4C7ucUI/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/tOUG4C7ucUI/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "শাশুড়ি vs বোকা বৌমা🤣🤣|| #bongposto #bengalicomedy #funnyshorts #funny #comedy #bokabouma",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT1M57S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "1710184",
+                "likeCount": "106527",
+                "favoriteCount": "0",
+                "commentCount": "805"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/tOUG4C7ucUI\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Entertainment",
+                    "https://en.wikipedia.org/wiki/Film"
+                ]
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "GfmIikjw3pA70f3xFhryQljI6Ac",
+            "id": "7Y41U-HK0LM",
+            "snippet": {
+                "publishedAt": "2025-03-06T04:56:29Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "Every Teacher In exam Hall 🥲 || #bongposto #funny #comedy",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/7Y41U-HK0LM/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/7Y41U-HK0LM/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/7Y41U-HK0LM/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/7Y41U-HK0LM/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/7Y41U-HK0LM/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Every Teacher In exam Hall 🥲 || #bongposto #funny #comedy",
+                    "description": ""
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT1M33S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "2284816",
+                "likeCount": "138640",
+                "favoriteCount": "0",
+                "commentCount": "1053"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/7Y41U-HK0LM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "recordingDetails": {},
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        },
+        {
+            "kind": "youtube#video",
+            "etag": "Y0eQpj1UMogB4u8ltDfMzwkys70",
+            "id": "bv6tkjbswkI",
+            "snippet": {
+                "publishedAt": "2025-01-27T05:27:12Z",
+                "channelId": "UCMlzi5avz-Bcn_1A_w-M5cg",
+                "title": "গয়নার বাক্স 🎁 || #funny #bongposto #comedy #treasurehunt #suspense",
+                "description": "You can purchase the product in my video 😍✨ by clicking on the link below:\n\nAlps Goodness Rosemary Water (100 ml) | Rosemary water for hair | Hair Spray for Regrowth | Hair Growth Expert | Viral Rinse | Bestselling Spray\n\nhttps://mlpl.link/6m39PINF\n\n\n\nStory By Team Bong Posto \nCopyright ©️ @BongPosto \n\nSpecial Appearance- Raunak Dalui \nTumbnail by - @itsbhaiya7675",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/bv6tkjbswkI/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/bv6tkjbswkI/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/bv6tkjbswkI/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/bv6tkjbswkI/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/bv6tkjbswkI/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Bong Posto",
+                "categoryId": "23",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "গয়নার বাক্স 🎁 || #funny #bongposto #comedy #treasurehunt #suspense",
+                    "description": "You can purchase the product in my video 😍✨ by clicking on the link below:\n\nAlps Goodness Rosemary Water (100 ml) | Rosemary water for hair | Hair Spray for Regrowth | Hair Growth Expert | Viral Rinse | Bestselling Spray\n\nhttps://mlpl.link/6m39PINF\n\n\n\nStory By Team Bong Posto \nCopyright ©️ @BongPosto \n\nSpecial Appearance- Raunak Dalui \nTumbnail by - @itsbhaiya7675"
+                },
+                "defaultAudioLanguage": "bn"
+            },
+            "contentDetails": {
+                "duration": "PT21M50S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "false",
+                "licensedContent": true,
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "status": {
+                "uploadStatus": "processed",
+                "privacyStatus": "public",
+                "license": "youtube",
+                "embeddable": true,
+                "publicStatsViewable": true,
+                "madeForKids": false
+            },
+            "statistics": {
+                "viewCount": "7501977",
+                "likeCount": "102826",
+                "favoriteCount": "0",
+                "commentCount": "17349"
+            },
+            "player": {
+                "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/bv6tkjbswkI\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+            },
+            "topicDetails": {
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+                ]
+            },
+            "recordingDetails": {},
+            "liveStreamingDetails": {
+                "actualStartTime": "2025-01-27T05:27:12Z",
+                "actualEndTime": "2025-01-27T05:51:22Z",
+                "scheduledStartTime": "2025-01-27T05:26:41Z"
+            },
+            "paidProductPlacementDetails": {
+                "hasPaidProductPlacement": false
+            }
+        }
+    ],
+    "pageInfo": {
+        "totalResults": 15,
+        "resultsPerPage": 15
+    }
+}
+
+GET : curl --location 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Csnippet%2Cstatistics%2Cstatus%2CtopicDetails&id=UCX6OQ3DkcsbYNE6H8uQQuVA%2CUC_x5XG1OV2P6uZZ5FSM9Ttw&key=AIzaSyCVYe70l1GTDIDJf2EDWBupbIpUhLohA-4'
+
+response: 
+{
+    "kind": "youtube#channelListResponse",
+    "etag": "RBnfAtd4ukVKKxSZJ9tXtVVaypQ",
+    "pageInfo": {
+        "totalResults": 2,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#channel",
+            "etag": "gb8RSrqkO5EycXCCT14ZtvLhSAM",
+            "id": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+            "snippet": {
+                "title": "MrBeast",
+                "description": "SUBSCRIBE FOR A COOKIE!\nNew MrBeast or MrBeast Gaming video every single Saturday at noon eastern time!\nAccomplishments:\n- Raised $20,000,000 To Plant 20,000,000 Trees\n- Removed 30,000,000 pounds of trash from the ocean\n- Helped 2,000 people walk again\n- Helped 1,000 blind people see\n- Helped 1,000 deaf people hear\n- Built wells in Africa\n- Built and gave away 100 houses\n- Adopted every dog in a shelter (twice)\n- Given millions to charity\n- Started my own snack company Feastables\n- Started my own software company Viewstats\n- Started Lunchly, a tasty, better-for-you lunch option\n- Gave away a private island (twice)\n- Gave away 1 million meals\n- I counted to 100k\n- Ran a marathon in the world's largest shoes\n- Survived 50 hours in Antarctica\n- Recreated Squid Game in real life\n- Created the largest competition show with 1000 people (Beast Games)\n- Gave $5,000,000 to one person\n- Passed T-Series to become most subscribed YouTube channel 🥹\nyou get it, I appreciate all of you so much :)\n",
+                "customUrl": "@mrbeast",
+                "publishedAt": "2012-02-20T00:43:50Z",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/nxYrc_1_2f77DoBadyxMTmv7ZpRZapHR5jbuYe7PlPd5cIRJxtNNEYyOC0ZsxaDyJJzXrnJiuDE=s88-c-k-c0x00ffffff-no-rj",
+                        "width": 88,
+                        "height": 88
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/nxYrc_1_2f77DoBadyxMTmv7ZpRZapHR5jbuYe7PlPd5cIRJxtNNEYyOC0ZsxaDyJJzXrnJiuDE=s240-c-k-c0x00ffffff-no-rj",
+                        "width": 240,
+                        "height": 240
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/nxYrc_1_2f77DoBadyxMTmv7ZpRZapHR5jbuYe7PlPd5cIRJxtNNEYyOC0ZsxaDyJJzXrnJiuDE=s800-c-k-c0x00ffffff-no-rj",
+                        "width": 800,
+                        "height": 800
+                    }
+                },
+                "defaultLanguage": "en",
+                "localized": {
+                    "title": "MrBeast",
+                    "description": "SUBSCRIBE FOR A COOKIE!\nNew MrBeast or MrBeast Gaming video every single Saturday at noon eastern time!\nAccomplishments:\n- Raised $20,000,000 To Plant 20,000,000 Trees\n- Removed 30,000,000 pounds of trash from the ocean\n- Helped 2,000 people walk again\n- Helped 1,000 blind people see\n- Helped 1,000 deaf people hear\n- Built wells in Africa\n- Built and gave away 100 houses\n- Adopted every dog in a shelter (twice)\n- Given millions to charity\n- Started my own snack company Feastables\n- Started my own software company Viewstats\n- Started Lunchly, a tasty, better-for-you lunch option\n- Gave away a private island (twice)\n- Gave away 1 million meals\n- I counted to 100k\n- Ran a marathon in the world's largest shoes\n- Survived 50 hours in Antarctica\n- Recreated Squid Game in real life\n- Created the largest competition show with 1000 people (Beast Games)\n- Gave $5,000,000 to one person\n- Passed T-Series to become most subscribed YouTube channel 🥹\nyou get it, I appreciate all of you so much :)\n"
+                },
+                "country": "US"
+            },
+            "contentDetails": {
+                "relatedPlaylists": {
+                    "likes": "",
+                    "uploads": "UUX6OQ3DkcsbYNE6H8uQQuVA"
+                }
+            },
+            "statistics": {
+                "viewCount": "88895304281",
+                "subscriberCount": "411000000",
+                "hiddenSubscriberCount": false,
+                "videoCount": "881"
+            },
+            "topicDetails": {
+                "topicIds": [
+                    "/m/019_rr",
+                    "/m/02jjt"
+                ],
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)",
+                    "https://en.wikipedia.org/wiki/Entertainment"
+                ]
+            },
+            "status": {
+                "privacyStatus": "public",
+                "isLinked": true,
+                "longUploadsStatus": "longUploadsUnspecified",
+                "madeForKids": false
+            }
+        },
+        {
+            "kind": "youtube#channel",
+            "etag": "8yJ6GCEVV9wsqO1gWwkDLscQsww",
+            "id": "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+            "snippet": {
+                "title": "Google for Developers",
+                "description": "Subscribe to join a community of creative developers and learn the latest in Google technology — from AI and cloud, to mobile and web.\n\nExplore more at developers.google.com\n\n",
+                "customUrl": "@googledevelopers",
+                "publishedAt": "2007-08-23T00:34:43Z",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/2eI1TjX447QZFDe6R32K0V2mjbVMKT5mIfQR-wK5bAsxttS_7qzUDS1ojoSKeSP0NuWd6sl7qQ=s88-c-k-c0x00ffffff-no-rj",
+                        "width": 88,
+                        "height": 88
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/2eI1TjX447QZFDe6R32K0V2mjbVMKT5mIfQR-wK5bAsxttS_7qzUDS1ojoSKeSP0NuWd6sl7qQ=s240-c-k-c0x00ffffff-no-rj",
+                        "width": 240,
+                        "height": 240
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/2eI1TjX447QZFDe6R32K0V2mjbVMKT5mIfQR-wK5bAsxttS_7qzUDS1ojoSKeSP0NuWd6sl7qQ=s800-c-k-c0x00ffffff-no-rj",
+                        "width": 800,
+                        "height": 800
+                    }
+                },
+                "localized": {
+                    "title": "Google for Developers",
+                    "description": "Subscribe to join a community of creative developers and learn the latest in Google technology — from AI and cloud, to mobile and web.\n\nExplore more at developers.google.com\n\n"
+                },
+                "country": "US"
+            },
+            "contentDetails": {
+                "relatedPlaylists": {
+                    "likes": "",
+                    "uploads": "UU_x5XG1OV2P6uZZ5FSM9Ttw"
+                }
+            },
+            "statistics": {
+                "viewCount": "401532750",
+                "subscriberCount": "2510000",
+                "hiddenSubscriberCount": false,
+                "videoCount": "6662"
+            },
+            "topicDetails": {
+                "topicIds": [
+                    "/m/019_rr",
+                    "/m/07c1v",
+                    "/m/01k8wb"
+                ],
+                "topicCategories": [
+                    "https://en.wikipedia.org/wiki/Lifestyle_(sociology)",
+                    "https://en.wikipedia.org/wiki/Technology",
+                    "https://en.wikipedia.org/wiki/Knowledge"
+                ]
+            },
+            "status": {
+                "privacyStatus": "public",
+                "isLinked": true,
+                "longUploadsStatus": "longUploadsUnspecified",
+                "madeForKids": false
+            }
+        }
+    ]
+}

@@ -1,0 +1,161 @@
+[build]
+# Build configuration for Railway
+builder = "nixpacks"
+buildCommand = "pip install --upgrade pip && pip install -r requirements.txt"
+
+[deploy]
+# Deployment configuration
+startCommand = "gunicorn --config gunicorn.conf.py api_server:create_app()"
+healthcheckPath = "/health"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+# Environment variables for Railway deployment
+[environment]
+# Python configuration
+PYTHONUNBUFFERED = "1"
+PYTHONDONTWRITEBYTECODE = "1"
+
+# Flask configuration
+FLASK_ENV = "production"
+FLASK_DEBUG = "false"
+FLASK_HOST = "0.0.0.0"
+PORT = "8000"
+
+# Production WSGI settings
+WORKERS = "4"
+WORKER_CLASS = "gevent"
+WORKER_CONNECTIONS = "1000"
+TIMEOUT = "120"
+KEEPALIVE = "5"
+MAX_REQUESTS = "1000"
+MAX_REQUESTS_JITTER = "100"
+
+# API settings
+ENABLE_METRICS = "true"
+ENABLE_CACHING = "true"
+CACHE_DURATION = "1800"
+MAX_REQUESTS_PER_MINUTE = "60"
+RATE_LIMIT_DEFAULT = "100 per hour"
+
+# Logging configuration (console only)
+LOG_LEVEL = "INFO"
+LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Cache TTL settings
+CACHE_TTL_CHANNEL = "1800"
+CACHE_TTL_VIDEO = "600"
+CACHE_TTL_RSS = "300"
+DEFAULT_CACHE_TTL = "3600"
+
+# Rate limiting
+MIN_REQUEST_INTERVAL = "0.1"
+MAX_RETRIES = "3"
+RETRY_DELAY = "1.0"
+
+# Batch processing
+MAX_VIDEO_BATCH_SIZE = "50"
+MAX_CHANNEL_BATCH_SIZE = "50"
+MAX_CONCURRENT_WORKERS = "5"
+
+# Security
+REQUIRE_API_AUTH = "true"
+CORS_ORIGINS = "*"
+
+# Request timeout
+REQUEST_TIMEOUT = "30"
+
+# Railway specific settings
+[railway]
+# Service configuration
+serviceName = "youtube-api-handler"
+region = "us-west1"
+
+# Resource allocation
+memory = "512Mi"
+cpu = "500m"
+
+# Networking
+ports = [8000]
+publicPort = 8000
+
+# Health monitoring
+healthcheck = true
+healthcheckPath = "/health"
+healthcheckInterval = "30s"
+healthcheckTimeout = "10s"
+healthcheckRetries = 3
+
+# Auto-scaling (if available in your Railway plan)
+autoscaling = false
+minReplicas = 1
+maxReplicas = 3
+
+# Volume mounts for persistence (Railway handles this automatically)
+[volumes]
+# Railway will handle persistent storage automatically
+# SQLite database will be stored in Railway's persistent volume
+
+# Build settings
+[build.env]
+# Build-time environment variables
+NODE_ENV = "production"
+DEBIAN_FRONTEND = "noninteractive"
+
+# Railway deployment hooks
+[hooks]
+# Pre-deployment validation
+beforeDeploy = [
+    "python -c 'from config import Config; Config.validate(); print(\"✅ Configuration validated\")'",
+    "python -c 'import sqlite_logger; print(\"✅ SQLite logger available\")'",
+    "python -c 'import youtube_api_handler; print(\"✅ YouTube API handler available\")'"
+]
+
+# Post-deployment checks
+afterDeploy = [
+    "curl -f $RAILWAY_PUBLIC_URL/health || exit 1"
+]
+
+# Required environment variables (set these in Railway dashboard)
+[env.required]
+# These must be set in Railway environment variables
+variables = [
+    "YOUTUBE_API_KEY_1",        # Primary YouTube API key
+    "API_AUTH_KEY",             # API authentication key
+    "SECRET_KEY"                # Flask secret key
+]
+
+# Optional environment variables with defaults
+[env.optional]
+# These have defaults but can be overridden
+YOUTUBE_API_KEY_2 = ""          # Secondary API key (optional)
+YOUTUBE_API_KEY_3 = ""          # Tertiary API key (optional)
+YOUTUBE_API_KEY_ROTATION_STRATEGY = "round_robin"
+YOUTUBE_API_KEY_DAILY_QUOTA = "10000"
+YOUTUBE_API_KEY_HOURLY_QUOTA = "1000"
+
+# Monitoring and observability
+[monitoring]
+# Railway built-in monitoring
+enabled = true
+alerts = true
+
+# Custom metrics endpoints
+metricsPath = "/metrics"
+logsPath = "/api/logs"
+
+# Performance settings
+[performance]
+# Optimize for API workloads
+preloadApp = true
+enableStdioInheritance = true
+
+# Connection pooling
+keepAlive = true
+keepAliveTimeout = 5
+
+# Request handling
+maxRequestSize = "10mb"
+bodyTimeout = 30
+headerTimeout = 10 

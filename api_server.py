@@ -5,36 +5,19 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from youtube_api_handler import YouTubeAPIHandler
 from config import Config
+from sqlite_logger import SQLiteHandler, SQLiteLogReader
 import logging
-import logging.handlers
 from functools import wraps
 import secrets
 from datetime import datetime
 import os
 import psutil
-from prometheus_client import Counter, Histogram, generate_latest, CollectorRegistry, CONTENT_TYPE_LATEST
 import time
 
-# Configure production logging
+# Configure SQLite-based logging
 def setup_logging():
-    """Setup production-grade logging with file rotation and robust directory creation"""
+    """Setup SQLite-based logging system"""
     try:
-        # Create logs directory structure if it doesn't exist
-        log_files = [Config.LOG_FILE, Config.ERROR_LOG_FILE, Config.ACCESS_LOG_FILE]
-        
-        for log_file in log_files:
-            log_dir = os.path.dirname(log_file)
-            if log_dir and not os.path.exists(log_dir):
-                try:
-                    os.makedirs(log_dir, mode=0o755, exist_ok=True)
-                    print(f"Created log directory: {log_dir}")
-                except PermissionError:
-                    print(f"Warning: Cannot create log directory {log_dir}, using current directory")
-                    # Fallback to current directory
-                    Config.LOG_FILE = os.path.basename(Config.LOG_FILE)
-                    Config.ERROR_LOG_FILE = os.path.basename(Config.ERROR_LOG_FILE)
-                    Config.ACCESS_LOG_FILE = os.path.basename(Config.ACCESS_LOG_FILE)
-        
         # Root logger configuration
         root_logger = logging.getLogger()
         root_logger.setLevel(getattr(logging, Config.LOG_LEVEL, logging.INFO))
@@ -50,35 +33,16 @@ def setup_logging():
         console_handler.setFormatter(console_formatter)
         root_logger.addHandler(console_handler)
         
-        # Try to add file handlers, with graceful fallback
+        # SQLite handler - replaces file-based logging
         try:
-            # File handler with rotation for production
-            file_handler = logging.handlers.RotatingFileHandler(
-                Config.LOG_FILE,
-                maxBytes=Config.LOG_MAX_SIZE,
-                backupCount=Config.LOG_BACKUP_COUNT
-            )
-            file_handler.setLevel(getattr(logging, Config.LOG_LEVEL, logging.INFO))
-            file_formatter = logging.Formatter(Config.LOG_FORMAT)
-            file_handler.setFormatter(file_formatter)
-            root_logger.addHandler(file_handler)
-            print(f"Logging to file: {Config.LOG_FILE}")
-        except (PermissionError, FileNotFoundError) as e:
-            print(f"Warning: Cannot write to main log file {Config.LOG_FILE}: {e}")
-        
-        try:
-            # Error file handler for errors only
-            error_handler = logging.handlers.RotatingFileHandler(
-                Config.ERROR_LOG_FILE,
-                maxBytes=Config.LOG_MAX_SIZE,
-                backupCount=Config.LOG_BACKUP_COUNT
-            )
-            error_handler.setLevel(logging.ERROR)
-            error_handler.setFormatter(file_formatter)
-            root_logger.addHandler(error_handler)
-            print(f"Error logging to file: {Config.ERROR_LOG_FILE}")
-        except (PermissionError, FileNotFoundError) as e:
-            print(f"Warning: Cannot write to error log file {Config.ERROR_LOG_FILE}: {e}")
+            sqlite_handler = SQLiteHandler(db_path="logs/app_logs.db")
+            sqlite_handler.setLevel(getattr(logging, Config.LOG_LEVEL, logging.INFO))
+            sqlite_formatter = logging.Formatter(Config.LOG_FORMAT)
+            sqlite_handler.setFormatter(sqlite_formatter)
+            root_logger.addHandler(sqlite_handler)
+            print("✅ SQLite logging enabled: logs/app_logs.db")
+        except Exception as e:
+            print(f"Warning: Cannot setup SQLite logging: {e}")
     
     except Exception as e:
         print(f"Error setting up logging: {e}")
@@ -102,45 +66,18 @@ cors = CORS(app, origins=Config.CORS_ORIGINS)
 
 # Initialize Rate Limiter
 limiter = Limiter(
-    app=app,
     key_func=get_remote_address,
+    app=app,
     storage_uri=Config.RATE_LIMIT_STORAGE_URL,
     default_limits=[Config.RATE_LIMIT_DEFAULT]
 )
 
-# Initialize Prometheus metrics
-if Config.ENABLE_METRICS:
-    registry = CollectorRegistry()
-    
-    # Request metrics
-    REQUEST_COUNT = Counter(
-        'http_requests_total',
-        'Total HTTP requests',
-        ['method', 'endpoint', 'status'],
-        registry=registry
-    )
-    
-    REQUEST_DURATION = Histogram(
-        'http_request_duration_seconds',
-        'HTTP request duration in seconds',
-        ['method', 'endpoint'],
-        registry=registry
-    )
-    
-    # YouTube API metrics
-    YOUTUBE_API_CALLS = Counter(
-        'youtube_api_calls_total',
-        'Total YouTube API calls',
-        ['endpoint_type'],
-        registry=registry
-    )
-    
-    CACHE_HITS = Counter(
-        'cache_hits_total',
-        'Total cache hits',
-        ['cache_type'],
-        registry=registry
-    )
+# Metrics tracking (simplified without Prometheus)
+metrics = {
+    'requests': {'total': 0, 'by_endpoint': {}},
+    'youtube_api_calls': {'total': 0, 'by_type': {}},
+    'cache_hits': {'total': 0, 'by_type': {}}
+}
 
 # Track application start time
 start_time = time.time()
@@ -250,17 +187,22 @@ def track_metrics(f):
         
         try:
             response = f(*args, **kwargs)
-            status = response[1] if isinstance(response, tuple) else 200
             
-            # Track request count and duration
-            REQUEST_COUNT.labels(method=method, endpoint=endpoint, status=status).inc()
-            REQUEST_DURATION.labels(method=method, endpoint=endpoint).observe(time.time() - start_time)
+            # Track request count
+            metrics['requests']['total'] += 1
+            endpoint_key = f"{method}_{endpoint}"
+            if endpoint_key not in metrics['requests']['by_endpoint']:
+                metrics['requests']['by_endpoint'][endpoint_key] = 0
+            metrics['requests']['by_endpoint'][endpoint_key] += 1
             
             return response
         except Exception as e:
-            # Track error metrics
-            REQUEST_COUNT.labels(method=method, endpoint=endpoint, status=500).inc()
-            REQUEST_DURATION.labels(method=method, endpoint=endpoint).observe(time.time() - start_time)
+            # Track error requests too
+            metrics['requests']['total'] += 1
+            endpoint_key = f"{method}_{endpoint}"
+            if endpoint_key not in metrics['requests']['by_endpoint']:
+                metrics['requests']['by_endpoint'][endpoint_key] = 0
+            metrics['requests']['by_endpoint'][endpoint_key] += 1
             raise
     
     return decorated_function
@@ -1291,6 +1233,95 @@ swagger_spec = {
         }
     },
     "components": {
+        "securitySchemes": {
+            "ApiKeyAuth": {
+                "type": "apiKey",
+                "in": "query",
+                "name": "api_key"
+            },
+            "ApiKeyHeader": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-API-Key"
+            }
+        },
+        "schemas": {
+            "StandardResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {"type": "boolean", "example": True},
+                    "data": {"type": "object"},
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "from_cache": {"type": "boolean"},
+                            "cache_status": {"type": "string", "enum": ["hit", "miss", "partial", "mixed", "live", "cleared"]},
+                            "timestamp": {"type": "string", "format": "date-time"},
+                            "count": {"type": "integer"}
+                        }
+                    }
+                }
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {"type": "boolean", "example": False},
+                    "error": {"type": "string"},
+                    "message": {"type": "string"},
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "timestamp": {"type": "string", "format": "date-time"}
+                        }
+                    }
+                }
+            },
+            "ChannelData": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "title": {"type": "string"},
+                    "description": {"type": "string"},
+                    "custom_url": {"type": "string"},
+                    "handle": {"type": "string"},
+                    "subscriber_count": {"type": "integer"},
+                    "video_count": {"type": "integer"},
+                    "view_count": {"type": "integer"},
+                    "primary_audio_language": {
+                        "type": "object",
+                        "properties": {
+                            "code": {"type": "string"},
+                            "name": {"type": "string"}
+                        }
+                    },
+                    "language_confidence": {"type": "number"},
+                    "thumbnails": {"type": "object"},
+                    "verification_status": {"type": "string"},
+                    "categories": {"type": "array", "items": {"type": "string"}},
+                    "email": {"type": "string"},
+                    "country": {"type": "string"}
+                }
+            },
+            "VideoData": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "title": {"type": "string"},
+                    "description": {"type": "string"},
+                    "channel_id": {"type": "string"},
+                    "channel_title": {"type": "string"},
+                    "published_at": {"type": "string", "format": "date-time"},
+                    "duration": {"type": "string"},
+                    "view_count": {"type": "integer"},
+                    "like_count": {"type": "integer"},
+                    "comment_count": {"type": "integer"},
+                    "video_type": {"type": "string", "enum": ["short", "long"]},
+                    "thumbnails": {"type": "object"},
+                    "category_id": {"type": "string"},
+                    "default_audio_language": {"type": "string"}
+                }
+            }
+        },
         "responses": {
             "BadRequest": {
                 "description": "Bad request",
@@ -1358,12 +1389,16 @@ app.register_blueprint(swaggerui_blueprint)
 
 # Production Monitoring Endpoints
 @app.route('/metrics', methods=['GET'])
-def metrics():
-    """Prometheus metrics endpoint (public for monitoring)"""
+def get_metrics():
+    """Simple metrics endpoint (replacement for Prometheus)"""
     if not Config.ENABLE_METRICS:
         return jsonify({'error': 'Metrics disabled'}), 404
     
-    return generate_latest(registry), 200, {'Content-Type': CONTENT_TYPE_LATEST}
+    return jsonify({
+        "metrics": metrics,
+        "uptime_seconds": time.time() - start_time,
+        "timestamp": datetime.now().isoformat()
+    })
 
 @app.route('/ready', methods=['GET'])
 def readiness_check():
@@ -1434,120 +1469,114 @@ def get_api_stats():
 @require_api_key
 @track_metrics
 def get_logs():
-    """Get API logs for monitoring and debugging"""
+    """Get API logs from SQLite database for monitoring and debugging"""
     try:
-        log_type = request.args.get('type', 'api')  # api, error, or access
-        lines = int(request.args.get('lines', '100'))  # Number of lines to return
+        log_type = request.args.get('type', 'all')  # all, api, error, or access
+        limit = int(request.args.get('lines', '100'))  # Number of logs to return
         level = request.args.get('level', 'all')  # all, error, warning, info, debug
+        offset = int(request.args.get('offset', '0'))  # Pagination offset
+        logger_filter = request.args.get('logger', None)  # Filter by logger name
         
         # Validate parameters
-        if lines > 1000:
-            lines = 1000  # Limit to prevent large responses
+        if limit > 1000:
+            limit = 1000  # Limit to prevent large responses
         
-        log_files = {
-            'api': Config.LOG_FILE,
-            'error': Config.ERROR_LOG_FILE,
-            'access': Config.ACCESS_LOG_FILE
-        }
+        if offset < 0:
+            offset = 0
         
-        if log_type not in log_files:
+        # Initialize SQLite log reader
+        log_reader = SQLiteLogReader(db_path="logs/app_logs.db")
+        
+        # Get logs from SQLite database
+        result = log_reader.get_logs(
+            log_type=log_type,
+            level=level,
+            limit=limit,
+            offset=offset,
+            logger_filter=logger_filter
+        )
+        
+        # Check for errors
+        if 'error' in result:
             return jsonify({
                 'success': False,
-                'error': 'Invalid log type',
-                'message': f'Valid types: {list(log_files.keys())}'
-            }), 400
-        
-        log_file_path = log_files[log_type]
-        
-        # Check if log file exists
-        if not os.path.exists(log_file_path):
-            return standardize_response({
-                'logs': [],
-                'message': f'Log file {log_file_path} does not exist',
-                'file_path': log_file_path,
-                'lines_requested': lines,
-                'level_filter': level
-            })
-        
-        # Read log file
-        log_entries = []
-        try:
-            # Read last N lines efficiently
-            with open(log_file_path, 'r', encoding='utf-8') as f:
-                all_lines = f.readlines()
-                recent_lines = all_lines[-lines:] if len(all_lines) > lines else all_lines
-                
-                for line in recent_lines:
-                    line = line.strip()
-                    if not line:
-                        continue
-                    
-                    # Filter by log level if specified
-                    if level != 'all':
-                        level_upper = level.upper()
-                        if f' - {level_upper} - ' not in line:
-                            continue
-                    
-                    # Parse log entry
-                    try:
-                        # Basic parsing - assuming format: timestamp - name - level - message
-                        parts = line.split(' - ', 3)
-                        if len(parts) >= 4:
-                            log_entry = {
-                                'timestamp': parts[0],
-                                'logger': parts[1],
-                                'level': parts[2],
-                                'message': parts[3]
-                            }
-                        else:
-                            log_entry = {
-                                'timestamp': 'unknown',
-                                'logger': 'unknown',
-                                'level': 'unknown',
-                                'message': line
-                            }
-                        log_entries.append(log_entry)
-                    except:
-                        # If parsing fails, include the raw line
-                        log_entries.append({
-                            'timestamp': 'unknown',
-                            'logger': 'unknown',
-                            'level': 'unknown',
-                            'message': line
-                        })
-        
-        except Exception as e:
-            logger.error(f"Error reading log file {log_file_path}: {e}")
-            return jsonify({
-                'success': False,
-                'error': 'Failed to read log file',
-                'message': str(e)
+                'error': 'Failed to read logs',
+                'message': result['error']
             }), 500
         
-        # Get file info
-        file_stat = os.stat(log_file_path)
-        file_size = file_stat.st_size
-        file_modified = datetime.fromtimestamp(file_stat.st_mtime).isoformat()
+        return standardize_response(result)
         
-        response_data = {
-            'logs': log_entries,
-            'metadata': {
-                'log_type': log_type,
-                'file_path': log_file_path,
-                'file_size_bytes': file_size,
-                'file_size_mb': round(file_size / (1024 * 1024), 2),
-                'file_modified': file_modified,
-                'lines_requested': lines,
-                'lines_returned': len(log_entries),
-                'level_filter': level,
-                'total_lines_in_file': len(all_lines) if 'all_lines' in locals() else 'unknown'
-            }
-        }
-        
-        return standardize_response(response_data)
-        
+    except ValueError as e:
+        return jsonify({
+            'success': False,
+            'error': 'Invalid parameter',
+            'message': str(e)
+        }), 400
     except Exception as e:
         logger.error(f"Error in get_logs endpoint: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Internal server error',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/logs/stats', methods=['GET'])
+@require_api_key
+@track_metrics
+def get_log_stats():
+    """Get log statistics from SQLite database"""
+    try:
+        log_reader = SQLiteLogReader(db_path="logs/app_logs.db")
+        stats = log_reader.get_log_stats()
+        
+        if 'error' in stats:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to get log stats',
+                'message': stats['error']
+            }), 500
+        
+        return standardize_response(stats)
+        
+    except Exception as e:
+        logger.error(f"Error in get_log_stats endpoint: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Internal server error',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/logs/cleanup', methods=['POST'])
+@require_api_key
+@track_metrics
+def cleanup_old_logs():
+    """Clean up old logs from SQLite database"""
+    try:
+        data = request.get_json() or {}
+        days_to_keep = data.get('days_to_keep', 30)
+        
+        # Validate parameter
+        if not isinstance(days_to_keep, int) or days_to_keep < 1:
+            return jsonify({
+                'success': False,
+                'error': 'Invalid parameter',
+                'message': 'days_to_keep must be a positive integer'
+            }), 400
+        
+        log_reader = SQLiteLogReader(db_path="logs/app_logs.db")
+        result = log_reader.cleanup_old_logs(days_to_keep)
+        
+        if 'error' in result:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to cleanup logs',
+                'message': result['error']
+            }), 500
+        
+        return standardize_response(result)
+        
+    except Exception as e:
+        logger.error(f"Error in cleanup_old_logs endpoint: {e}")
         return jsonify({
             'success': False,
             'error': 'Internal server error',

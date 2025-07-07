@@ -1,0 +1,90 @@
+[build]
+# Use Python 3.11 for optimal performance
+nixpkgs = ["python311", "python311Packages.pip", "python311Packages.setuptools"]
+
+[variables]
+# Python environment
+PYTHONUNBUFFERED = "1"
+PYTHONDONTWRITEBYTECODE = "1"
+
+# Flask configuration
+FLASK_APP = "api_server.py"
+FLASK_ENV = "production"
+
+# Application configuration
+PORT = "8000"
+HOST = "0.0.0.0"
+
+# Performance settings
+WORKERS = "4"
+TIMEOUT = "120"
+KEEPALIVE = "2"
+
+# API settings
+MAX_REQUESTS_PER_MINUTE = "60"
+ENABLE_METRICS = "true"
+ENABLE_CACHING = "true"
+CACHE_DURATION = "1800"
+
+[phases.build]
+# Install Python dependencies
+dependsOn = ["setup"]
+cmds = [
+    "pip install --upgrade pip",
+    "pip install -r requirements.txt"
+]
+
+[phases.setup]
+# Ensure logs directory exists
+cmds = [
+    "mkdir -p logs",
+    "touch logs/.gitkeep"
+]
+
+[start]
+# Production start command using Gunicorn
+cmd = "gunicorn --bind 0.0.0.0:$PORT --workers $WORKERS --timeout $TIMEOUT --keepalive $KEEPALIVE --access-logfile logs/access.log --error-logfile logs/error.log api_server:app"
+
+[environments.production]
+# Production-specific environment variables
+FLASK_ENV = "production"
+FLASK_DEBUG = "false"
+WORKERS = "4"
+
+[environments.development]
+# Development environment
+FLASK_ENV = "development"
+FLASK_DEBUG = "true"
+WORKERS = "1"
+
+# Health check configuration
+[healthcheck]
+path = "/health"
+interval = "30s"
+timeout = "10s"
+retries = 3
+
+# Resource limits
+[resources]
+memory = "512Mi"
+cpu = "500m"
+
+# Port configuration
+[ports]
+web = "8000"
+
+# Static files (if any)
+[static]
+# No static files for this API-only service
+
+# Custom build configuration
+[build.env]
+# Ensure UTF-8 encoding
+LC_ALL = "C.UTF-8"
+LANG = "C.UTF-8"
+
+# Database/Storage
+[volumes]
+# Persist logs and cache
+"/app/logs" = "logs"
+"/app/cache" = "cache" 

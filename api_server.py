@@ -17,48 +17,76 @@ import time
 
 # Configure production logging
 def setup_logging():
-    """Setup production-grade logging with file rotation"""
-    # Create logs directory if it doesn't exist
-    log_dir = os.path.dirname(Config.LOG_FILE)
-    if log_dir and not os.path.exists(log_dir):
-        os.makedirs(log_dir, exist_ok=True)
-    
-    # Root logger configuration
-    root_logger = logging.getLogger()
-    root_logger.setLevel(getattr(logging, Config.LOG_LEVEL))
-    
-    # Clear existing handlers
-    for handler in root_logger.handlers[:]:
-        root_logger.removeHandler(handler)
-    
-    # Console handler for development
-    if Config.FLASK_DEBUG:
+    """Setup production-grade logging with file rotation and robust directory creation"""
+    try:
+        # Create logs directory structure if it doesn't exist
+        log_files = [Config.LOG_FILE, Config.ERROR_LOG_FILE, Config.ACCESS_LOG_FILE]
+        
+        for log_file in log_files:
+            log_dir = os.path.dirname(log_file)
+            if log_dir and not os.path.exists(log_dir):
+                try:
+                    os.makedirs(log_dir, mode=0o755, exist_ok=True)
+                    print(f"Created log directory: {log_dir}")
+                except PermissionError:
+                    print(f"Warning: Cannot create log directory {log_dir}, using current directory")
+                    # Fallback to current directory
+                    Config.LOG_FILE = os.path.basename(Config.LOG_FILE)
+                    Config.ERROR_LOG_FILE = os.path.basename(Config.ERROR_LOG_FILE)
+                    Config.ACCESS_LOG_FILE = os.path.basename(Config.ACCESS_LOG_FILE)
+        
+        # Root logger configuration
+        root_logger = logging.getLogger()
+        root_logger.setLevel(getattr(logging, Config.LOG_LEVEL, logging.INFO))
+        
+        # Clear existing handlers
+        for handler in root_logger.handlers[:]:
+            root_logger.removeHandler(handler)
+        
+        # Console handler for development and fallback
         console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.DEBUG)
+        console_handler.setLevel(logging.DEBUG if Config.FLASK_DEBUG else logging.INFO)
         console_formatter = logging.Formatter(Config.LOG_FORMAT)
         console_handler.setFormatter(console_formatter)
         root_logger.addHandler(console_handler)
+        
+        # Try to add file handlers, with graceful fallback
+        try:
+            # File handler with rotation for production
+            file_handler = logging.handlers.RotatingFileHandler(
+                Config.LOG_FILE,
+                maxBytes=Config.LOG_MAX_SIZE,
+                backupCount=Config.LOG_BACKUP_COUNT
+            )
+            file_handler.setLevel(getattr(logging, Config.LOG_LEVEL, logging.INFO))
+            file_formatter = logging.Formatter(Config.LOG_FORMAT)
+            file_handler.setFormatter(file_formatter)
+            root_logger.addHandler(file_handler)
+            print(f"Logging to file: {Config.LOG_FILE}")
+        except (PermissionError, FileNotFoundError) as e:
+            print(f"Warning: Cannot write to main log file {Config.LOG_FILE}: {e}")
+        
+        try:
+            # Error file handler for errors only
+            error_handler = logging.handlers.RotatingFileHandler(
+                Config.ERROR_LOG_FILE,
+                maxBytes=Config.LOG_MAX_SIZE,
+                backupCount=Config.LOG_BACKUP_COUNT
+            )
+            error_handler.setLevel(logging.ERROR)
+            error_handler.setFormatter(file_formatter)
+            root_logger.addHandler(error_handler)
+            print(f"Error logging to file: {Config.ERROR_LOG_FILE}")
+        except (PermissionError, FileNotFoundError) as e:
+            print(f"Warning: Cannot write to error log file {Config.ERROR_LOG_FILE}: {e}")
     
-    # File handler with rotation for production
-    file_handler = logging.handlers.RotatingFileHandler(
-        Config.LOG_FILE,
-        maxBytes=Config.LOG_MAX_SIZE,
-        backupCount=Config.LOG_BACKUP_COUNT
-    )
-    file_handler.setLevel(getattr(logging, Config.LOG_LEVEL))
-    file_formatter = logging.Formatter(Config.LOG_FORMAT)
-    file_handler.setFormatter(file_formatter)
-    root_logger.addHandler(file_handler)
-    
-    # Error file handler for errors only
-    error_handler = logging.handlers.RotatingFileHandler(
-        Config.ERROR_LOG_FILE,
-        maxBytes=Config.LOG_MAX_SIZE,
-        backupCount=Config.LOG_BACKUP_COUNT
-    )
-    error_handler.setLevel(logging.ERROR)
-    error_handler.setFormatter(file_formatter)
-    root_logger.addHandler(error_handler)
+    except Exception as e:
+        print(f"Error setting up logging: {e}")
+        # Minimal fallback logging setup
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -74,8 +102,8 @@ cors = CORS(app, origins=Config.CORS_ORIGINS)
 
 # Initialize Rate Limiter
 limiter = Limiter(
-    key_func=get_remote_address,
     app=app,
+    key_func=get_remote_address,
     storage_uri=Config.RATE_LIMIT_STORAGE_URL,
     default_limits=[Config.RATE_LIMIT_DEFAULT]
 )

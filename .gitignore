@@ -133,7 +133,9 @@ dmypy.json
 cython_debug/
 
 # === LOGS AND MONITORING ===
-# Log files
+# Log files (but keep directory structure)
+logs/*.log
+logs/*.log.*
 *.log
 *.log.*
 log/
@@ -144,6 +146,9 @@ error.log*
 api.log*
 debug.log*
 audit.log*
+
+# Keep directory structure
+!logs/.gitkeep
 
 # Monitoring and metrics
 metrics/

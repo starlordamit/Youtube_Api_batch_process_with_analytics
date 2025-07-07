@@ -3,7 +3,6 @@
 
 [build]
 builder = "nixpacks"
-buildCommand = "pip install --upgrade pip && pip install -r requirements.txt"
 
 [start]
 cmd = "gunicorn --config gunicorn.conf.py api_server:create_app()"
@@ -46,14 +45,20 @@ NODE_ENV = "production"
 DEBIAN_FRONTEND = "noninteractive"
 
 [phases.setup]
-nixPkgs = ["python311", "pip"]
+nixPkgs = ["python311"]
+
+[phases.install]
+cmds = [
+  "python3 -m venv /opt/venv",
+  ". /opt/venv/bin/activate",
+  "pip install --upgrade pip"
+]
 
 [phases.build]
-dependsOn = ["setup"]
-cmds = ["pip install --upgrade pip", "pip install -r requirements.txt"]
-
-[phases.start]
-cmd = "gunicorn --config gunicorn.conf.py api_server:create_app()"
+cmds = [
+  ". /opt/venv/bin/activate",
+  "pip install -r requirements.txt"
+]
 
 [checks]
 startCommandHealthcheck = true

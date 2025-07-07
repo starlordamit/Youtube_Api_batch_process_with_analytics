@@ -5,7 +5,7 @@
 builder = "nixpacks"
 
 [start]
-cmd = "gunicorn --config gunicorn.conf.py 'api_server:create_app'"
+cmd = "gunicorn --config gunicorn.conf.py api_server:app"
 
 
 [variables]

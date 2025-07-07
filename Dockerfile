@@ -45,5 +45,5 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-# Production command using Gunicorn with create_app factory
-CMD ["gunicorn", "--config", "gunicorn.conf.py", "api_server:create_app()"] 
+# Production command using Gunicorn with app instance
+CMD ["gunicorn", "--config", "gunicorn.conf.py", "api_server:app"] 

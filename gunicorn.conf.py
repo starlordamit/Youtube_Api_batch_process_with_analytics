@@ -2,6 +2,13 @@ import os
 import multiprocessing
 from config import Config
 
+# Fix gevent monkey patching warning by patching early
+try:
+    import gevent.monkey
+    gevent.monkey.patch_all()
+except ImportError:
+    pass
+
 # Server socket
 bind = f"{Config.FLASK_HOST}:{Config.FLASK_PORT}"
 backlog = 2048

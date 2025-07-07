@@ -17,8 +17,7 @@ import threading
 from config import Config
 
 # Configure logging
-Config.validate()  # Validate configuration on import
-logging.basicConfig(level=getattr(logging, Config.LOG_LEVEL), format=Config.LOG_FORMAT)
+logging.basicConfig(level=getattr(logging, Config.LOG_LEVEL, logging.INFO), format=Config.LOG_FORMAT)
 logger = logging.getLogger(__name__)
 
 @dataclass
@@ -152,8 +151,19 @@ class YouTubeAPIHandler:
         # Initialize logger first before using it
         self.logger = logging.getLogger(__name__)
         
-        # Load configuration and API keys
-        Config.load_api_keys()
+        try:
+            # Load and validate configuration and API keys
+            Config.load_api_keys()
+            # Only validate if not already done
+            if not getattr(Config, '_validated', False):
+                Config.validate()
+                Config._validated = True
+        except Exception as e:
+            self.logger.error(f"Configuration validation failed: {e}")
+            raise ValueError(f"Invalid configuration: {e}")
+        
+        self.logger.info("YouTube API Handler initialized with base URL: %s", Config.YOUTUBE_API_BASE_URL)
+        self.logger.info("Cache TTL: %ss, Rate limit: %ss", cache_ttl or Config.DEFAULT_CACHE_TTL, Config.MIN_REQUEST_INTERVAL)
         
         # API Key Management
         if api_key:

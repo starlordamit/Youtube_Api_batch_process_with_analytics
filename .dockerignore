@@ -1,0 +1,81 @@
+# === SENSITIVE DATA ===
+.env
+.env.*
+production.env
+*.env
+*api_key*
+*secret*
+*password*
+*token*
+ssl/
+certs/
+*.pem
+*.key
+*.crt
+
+# === DEVELOPMENT FILES ===
+.git/
+.gitignore
+README.md
+DEPLOYMENT.md
+API_KEY_ROTATION.md
+*.md
+
+# === LOGS ===
+logs/
+*.log
+*.log.*
+
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+
+# === VIRTUAL ENVIRONMENTS ===
+venv/
+env/
+.venv/
+ENV/
+
+# === IDEs ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+*.tmp
+*.backup
+
+# === TESTING ===
+test_data/
+sample_data/
+mock_data/
+
+# === CACHE ===
+.cache/
+cache/
+*.cache
+
+# === DOCKER ===
+Dockerfile.local
+docker-compose.override.yml
+.dockerignore.local
+
+# === TEMPORARY ===
+tmp/
+temp/
+*.tmp
+
+# === NODE.JS ===
+node_modules/
+npm-debug.log*
+yarn-debug.log* 

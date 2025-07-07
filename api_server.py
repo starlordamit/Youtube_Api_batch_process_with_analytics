@@ -114,6 +114,9 @@ if Config.ENABLE_METRICS:
         registry=registry
     )
 
+# Track application start time
+start_time = time.time()
+
 # Initialize YouTube API handler (will use config from .env)
 try:
     yt_handler = YouTubeAPIHandler()
@@ -1154,6 +1157,109 @@ swagger_spec = {
                     "401": {"$ref": "#/components/responses/Unauthorized"}
                 }
             }
+        },
+        "/api/logs": {
+            "get": {
+                "summary": "Get API Logs",
+                "description": "Retrieve API logs for monitoring and debugging purposes",
+                "tags": ["System"],
+                "security": [{"ApiKeyAuth": []}, {"ApiKeyHeader": []}],
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Type of logs to retrieve",
+                        "required": False,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["api", "error", "access"],
+                            "default": "api"
+                        }
+                    },
+                    {
+                        "name": "lines",
+                        "in": "query",
+                        "description": "Number of log lines to return (max 1000)",
+                        "required": False,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 1000,
+                            "default": 100
+                        }
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "Filter logs by level",
+                        "required": False,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["all", "debug", "info", "warning", "error"],
+                            "default": "all"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logs retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {"$ref": "#/components/schemas/StandardResponse"},
+                                        {
+                                            "properties": {
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "logs": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "timestamp": {"type": "string"},
+                                                                    "logger": {"type": "string"},
+                                                                    "level": {"type": "string"},
+                                                                    "message": {"type": "string"}
+                                                                }
+                                                            }
+                                                        },
+                                                        "metadata": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "log_type": {"type": "string"},
+                                                                "file_path": {"type": "string"},
+                                                                "file_size_bytes": {"type": "integer"},
+                                                                "file_size_mb": {"type": "number"},
+                                                                "file_modified": {"type": "string", "format": "date-time"},
+                                                                "lines_requested": {"type": "integer"},
+                                                                "lines_returned": {"type": "integer"},
+                                                                "level_filter": {"type": "string"},
+                                                                "total_lines_in_file": {"type": "integer"}
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {"$ref": "#/components/responses/BadRequest"},
+                    "401": {"$ref": "#/components/responses/Unauthorized"},
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": "#/components/schemas/ErrorResponse"}
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -1295,6 +1401,130 @@ def get_api_stats():
         from_cache=False,
         cache_status='live'
     ))
+
+@app.route('/api/logs', methods=['GET'])
+@require_api_key
+@track_metrics
+def get_logs():
+    """Get API logs for monitoring and debugging"""
+    try:
+        log_type = request.args.get('type', 'api')  # api, error, or access
+        lines = int(request.args.get('lines', '100'))  # Number of lines to return
+        level = request.args.get('level', 'all')  # all, error, warning, info, debug
+        
+        # Validate parameters
+        if lines > 1000:
+            lines = 1000  # Limit to prevent large responses
+        
+        log_files = {
+            'api': Config.LOG_FILE,
+            'error': Config.ERROR_LOG_FILE,
+            'access': Config.ACCESS_LOG_FILE
+        }
+        
+        if log_type not in log_files:
+            return jsonify({
+                'success': False,
+                'error': 'Invalid log type',
+                'message': f'Valid types: {list(log_files.keys())}'
+            }), 400
+        
+        log_file_path = log_files[log_type]
+        
+        # Check if log file exists
+        if not os.path.exists(log_file_path):
+            return standardize_response({
+                'logs': [],
+                'message': f'Log file {log_file_path} does not exist',
+                'file_path': log_file_path,
+                'lines_requested': lines,
+                'level_filter': level
+            })
+        
+        # Read log file
+        log_entries = []
+        try:
+            # Read last N lines efficiently
+            with open(log_file_path, 'r', encoding='utf-8') as f:
+                all_lines = f.readlines()
+                recent_lines = all_lines[-lines:] if len(all_lines) > lines else all_lines
+                
+                for line in recent_lines:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    
+                    # Filter by log level if specified
+                    if level != 'all':
+                        level_upper = level.upper()
+                        if f' - {level_upper} - ' not in line:
+                            continue
+                    
+                    # Parse log entry
+                    try:
+                        # Basic parsing - assuming format: timestamp - name - level - message
+                        parts = line.split(' - ', 3)
+                        if len(parts) >= 4:
+                            log_entry = {
+                                'timestamp': parts[0],
+                                'logger': parts[1],
+                                'level': parts[2],
+                                'message': parts[3]
+                            }
+                        else:
+                            log_entry = {
+                                'timestamp': 'unknown',
+                                'logger': 'unknown',
+                                'level': 'unknown',
+                                'message': line
+                            }
+                        log_entries.append(log_entry)
+                    except:
+                        # If parsing fails, include the raw line
+                        log_entries.append({
+                            'timestamp': 'unknown',
+                            'logger': 'unknown',
+                            'level': 'unknown',
+                            'message': line
+                        })
+        
+        except Exception as e:
+            logger.error(f"Error reading log file {log_file_path}: {e}")
+            return jsonify({
+                'success': False,
+                'error': 'Failed to read log file',
+                'message': str(e)
+            }), 500
+        
+        # Get file info
+        file_stat = os.stat(log_file_path)
+        file_size = file_stat.st_size
+        file_modified = datetime.fromtimestamp(file_stat.st_mtime).isoformat()
+        
+        response_data = {
+            'logs': log_entries,
+            'metadata': {
+                'log_type': log_type,
+                'file_path': log_file_path,
+                'file_size_bytes': file_size,
+                'file_size_mb': round(file_size / (1024 * 1024), 2),
+                'file_modified': file_modified,
+                'lines_requested': lines,
+                'lines_returned': len(log_entries),
+                'level_filter': level,
+                'total_lines_in_file': len(all_lines) if 'all_lines' in locals() else 'unknown'
+            }
+        }
+        
+        return standardize_response(response_data)
+        
+    except Exception as e:
+        logger.error(f"Error in get_logs endpoint: {e}")
+        return jsonify({
+            'success': False,
+            'error': 'Internal server error',
+            'message': str(e)
+        }), 500
 
 @app.route('/api/swagger.json')
 def swagger():

@@ -1,10 +1,374 @@
+# === SENSITIVE DATA AND SECURITY ===
+# Environment files with API keys and secrets
 .env
-.DS_Store
-.venv
-.vscode
-.idea
-.pytest_cache
-.ruff_cache
-.mypy_cache
+.env.local
+.env.*.local
+.env.production
+.env.staging
+.env.development
+production.env
+*.env
+
+# API Keys and Secrets
+*api_key*
+*secret*
+*password*
+*token*
+config/secrets/*
+secrets/
+credentials/
+
+# SSL/TLS Certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+ssl/
+certs/
+
+# === PYTHON ===
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
 .coverage
 .coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# === LOGS AND MONITORING ===
+# Log files
+logs/
+*.log
+*.log.*
+log/
+*.out
+*.err
+access.log*
+error.log*
+api.log*
+debug.log*
+audit.log*
+
+# Monitoring and metrics
+metrics/
+monitoring/
+*.metrics
+
+# === DATABASES ===
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# PostgreSQL
+*.dump
+*.sql
+
+# Redis
+dump.rdb
+
+# MongoDB
+*.bson
+
+# === DOCKER ===
+# Docker
+Dockerfile.local
+docker-compose.override.yml
+docker-compose.local.yml
+.dockerignore.local
+*.dockerfile.local
+
+# Docker volumes
+docker-data/
+data/
+
+# === CLOUD AND DEPLOYMENT ===
+# AWS
+.aws/
+aws-credentials
+*.pem
+
+# Google Cloud
+gcloud/
+service-account*.json
+*.service-account.json
+
+# Azure
+.azure/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+terraform.tfvars.json
+
+# Kubernetes
+kubeconfig
+*.kubeconfig
+k8s-secrets/
+
+# Helm
+charts/*/secrets/
+
+# === DEVELOPMENT TOOLS ===
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# === TEMPORARY AND CACHE FILES ===
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# Cache directories
+.cache/
+cache/
+*.cache
+
+# === MEDIA AND UPLOADS ===
+# User uploads and media
+uploads/
+media/
+static/uploads/
+files/
+attachments/
+
+# Large files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# === PROJECT SPECIFIC ===
+# YouTube API specific
+youtube_data/
+video_cache/
+channel_cache/
+rss_cache/
+
+# API response caches
+api_cache/
+response_cache/
+
+# Testing data
+test_data/
+sample_data/
+mock_data/
+
+# Documentation builds
+docs/_build/
+docs/build/
+
+# Backup files
+*.backup
+backup/
+backups/
+
+# === RUNTIME AND PROCESS ===
+# Process IDs
+*.pid
+pids/
+
+# Runtime data
+runtime/
+run/
+
+# Socket files
+*.sock
+
+# === NODE.JS (if any frontend components) ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# === MISCELLANEOUS ===
+# Archive files in development
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tgz
+
+# Compiled binary files
+*.exe
+*.out
+*.app
+
+# Version control
+.git/
+.svn/
+.hg/
+
+# Local configuration overrides
+local_settings.py
+local_config.py
+config.local.py
+
+# Performance and profiling
+*.prof
+*.profile
+profiling/
+
+# Lock files
+*.lock
+
+# Editor configurations (keep global ones)
+!.editorconfig
+
+# Keep important config templates
+!.env.example
+!production.env.example
+!config.example.py
+
+# Keep documentation
+!README.md
+!DEPLOYMENT.md
+!API_KEY_ROTATION.md
+!CONTRIBUTING.md
+!LICENSE
+
+# Keep essential project files
+!requirements.txt
+!Dockerfile
+!docker-compose.yml
+!gunicorn.conf.py
+!.gitignore

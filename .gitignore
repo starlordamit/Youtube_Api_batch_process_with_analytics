@@ -134,7 +134,6 @@ cython_debug/
 
 # === LOGS AND MONITORING ===
 # Log files
-logs/
 *.log
 *.log.*
 log/
